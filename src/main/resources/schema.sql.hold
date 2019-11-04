@@ -1,0 +1,20 @@
+CREATE TABLE ratings (
+  id INTEGER IDENTITY PRIMARY KEY,
+  sessionid VARCHAR(50) NOT NULL,
+  theme VARCHAR(50) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  rating INTEGER NOT NULL,
+  created TIMESTAMP,
+);
+
+CREATE TABLE items (
+  id INTEGER IDENTITY PRIMARY KEY,
+  theme varchar(50) NOT NULL,
+  name varchar(50) NOT NULL,
+  caption varchar(50) NOT NULL,
+  rank INTEGER NOT NULL,
+  trivia varchar(500) NOT NULL,
+  filename varchar(50) NOT NULL,
+  image varchar(500),
+  created TIMESTAMP,
+);
