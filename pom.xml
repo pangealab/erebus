@@ -74,6 +74,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>ROOT</finalName>
 		<plugins>
 			<!-- <plugin>
 				<groupId>pl.project13.maven</groupId>
