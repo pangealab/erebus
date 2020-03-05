@@ -2,6 +2,30 @@
 
 This project showcases a simple web app written using Java Spring Boot 2.2 and which exposes a REST web service which can be used for the **Cat/City of the Day (COTD)** Sample Project. The application metrics are enabled using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html) and exposed using the [Micrometer Prometheus](https://micrometer.io/docs/registry/prometheus) so the telemetry can be read into a [Grafana](https://prometheus.io/docs/visualization/grafana) instance.
 
+# Deploy Locally
+
+1. Clone Project
+
+	```
+	git clone git@github.com:advlab/erebus.git
+	cd erebus
+	```
+
+1. Run Project locally
+
+    ```
+    mvn spring-boot:run
+    ```
+
+1. Test Loca URLs
+
+    ```
+    http://localhost:8080/api/items
+    http://localhost:8080/api/items
+    http://localhost:8080/actuator
+    http://localhost:8080/actuator/prometheus
+    ```
+
 # Test DB Console
 
 * Browse to the DB Console URL (e.g. http://erebus-sandbox.openshift.sytes.net/dbconsole) and use the following propertis to connect:
