@@ -17,13 +17,28 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
     mvn spring-boot:run
     ```
 
-1. Test Loca URLs
+1. Test Local URLs
 
     ```
     http://localhost:8080/api/items
     http://localhost:8080/api/items
     http://localhost:8080/actuator
     http://localhost:8080/actuator/prometheus
+    ```
+
+# Deploy on OKD
+
+    ```
+    oc new-app wildfly:13.0~https://github.com/advlab/erebus.git -l "app=erebus,monitor=true"
+    oc expose svc/erebus
+    ```
+
+# Undeploy from OKD
+
+1. Delete all application objects
+
+    ```
+    oc delete all -l app=erebus
     ```
 
 # Test DB Console
