@@ -28,6 +28,10 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
 # Deploy on OKD
 
+1. Login to OKD
+
+1. Deploy on OKD
+
     ```
     oc new-app wildfly:13.0~https://github.com/advlab/erebus.git -l "app=erebus,monitor=true"
     oc expose svc/erebus
