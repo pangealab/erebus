@@ -2,14 +2,26 @@
 
 This project showcases a simple web app written using Java Spring Boot 2.2 and which exposes a REST web service which can be used for the **Cat/City of the Day (COTD)** Sample Project. The application metrics are enabled using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html) and exposed using the [Micrometer Prometheus](https://micrometer.io/docs/registry/prometheus) so the telemetry can be read into a [Grafana](https://prometheus.io/docs/visualization/grafana) instance.
 
-# Deploy Locally
+# Login to OKD
 
-1. Clone Project
+1. Login to OKD Console and get Token
+
+1. Login to OKD unsing the CLI
+
+	```
+	oc login https://OKD-URL:OKD-PORT --token=YOUR-TOKEN
+	```
+
+# Clone Project
+
+1. Clone Project as follows:
 
 	```
 	git clone git@github.com:advlab/erebus.git
 	cd erebus
 	```
+
+# Deploy Locally
 
 1. Run Project locally
 
@@ -26,16 +38,7 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
     http://localhost:8080/actuator/prometheus
     ```
 
-# Deploy on OKD
-
-1. Login to OKD
-
-1. Clone Project
-
-	```
-	git clone git@github.com:advlab/erebus.git
-	cd erebus
-	```
+# Deploy on OKD using S2I
 
 1. Deploy on OKD using S2I
 
@@ -44,13 +47,18 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
     oc expose svc/erebus
     ```
 
-1. Deploy on OKD using Templates
+# Deploy on OKD using Templates
+
+1. Build Image
 
     ```
     oc process -f templates/build-erebus.yml | oc apply -f -
-    oc start-build erebus --follow
-    oc new-app -f templates/deploy-erebus.yml
+    oc start-build erebus
+    ```
 
+1. Deploy Pod
+
+    ```
     oc process -f templates/deploy-erebus.yml | oc apply -f -
     ```
 
