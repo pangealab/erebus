@@ -2,16 +2,6 @@
 
 This project showcases a simple web app written using Java Spring Boot 2.2 and which exposes a REST web service which can be used for the **Cat/City of the Day (COTD)** Sample Project. The application metrics are enabled using [Spring Boot Actuator](https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html) and exposed using the [Micrometer Prometheus](https://micrometer.io/docs/registry/prometheus) so the telemetry can be read into a [Grafana](https://prometheus.io/docs/visualization/grafana) instance.
 
-# Login to OKD
-
-1. Login to OKD Console and get Token
-
-1. Login to OKD unsing the CLI
-
-	```
-	oc login https://OKD-URL:OKD-PORT --token=YOUR-TOKEN
-	```
-
 # Clone Project
 
 1. Clone Project as follows:
@@ -37,6 +27,16 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
     http://localhost:8080/actuator
     http://localhost:8080/actuator/prometheus
     ```
+
+# Login to OKD
+
+1. Login to OKD Console and get Token
+
+1. Login to OKD unsing the CLI
+
+	```
+	oc login https://OKD-URL:OKD-PORT --token=YOUR-TOKEN
+	```
 
 # Deploy on OKD using S2I
 
