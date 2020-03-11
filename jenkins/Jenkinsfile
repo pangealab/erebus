@@ -20,7 +20,7 @@ pipeline {
     stage("Deploy Pod") {
       steps {
         echo "Deploy Pod"
-        /* Step here */
+        sh 'oc process -f templates/deploy-erebus.yml | oc apply -f -'
       }
     }
   }
