@@ -53,7 +53,7 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
     ```
     oc process -f templates/build-erebus.yml | oc apply -f -
-    oc start-build erebus
+    oc start-build erebus --wait
     ```
 
 1. Deploy Pod
