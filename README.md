@@ -30,6 +30,13 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
 1. Login to OKD
 
+1. Clone Project
+
+	```
+	git clone git@github.com:advlab/erebus.git
+	cd erebus
+	```
+
 1. Deploy on OKD
 
     ```
