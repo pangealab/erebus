@@ -92,22 +92,22 @@ objects:
           app: erebus
           deploymentconfig: erebus
           monitor: 'true'
-    spec:
-      containers:
-        - image: 'docker-registry.default.svc:5000/perseus/erebus:latest'
-          imagePullPolicy: IfNotPresent
-          name: erebus
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          dnsPolicy: ClusterFirst
-          restartPolicy: Always
-          schedulerName: default-scheduler
-          securityContext: {}
-          terminationGracePeriodSeconds: 30
+      spec:
+        containers:
+          - image: 'docker-registry.default.svc:5000/perseus/erebus:latest'
+            imagePullPolicy: IfNotPresent
+            name: erebus
+            ports:
+              - containerPort: 8080
+                protocol: TCP
+            resources: {}
+            terminationMessagePath: /dev/termination-log
+            terminationMessagePolicy: File
+            dnsPolicy: ClusterFirst
+            restartPolicy: Always
+            schedulerName: default-scheduler
+            securityContext: {}
+            terminationGracePeriodSeconds: 30
     test: false
     triggers:
       - type: ConfigChange
