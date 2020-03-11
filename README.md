@@ -84,4 +84,4 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
     ```
     ab -n 100 -c 5 http://erebus-sandbox.openshift.sytes.net/api/items
-    ```
+    ```    
