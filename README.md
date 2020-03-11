@@ -50,6 +50,8 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
     oc process -f templates/build-erebus.yml | oc apply -f -
     oc start-build erebus --follow
     oc new-app -f templates/deploy-erebus.yml
+
+    oc process -f templates/deploy-erebus.yml | oc apply -f -
     ```
 
 # Undeploy from OKD
