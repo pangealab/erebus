@@ -1,0 +1,72 @@
+###############################################################################
+#                                   Template                                  #
+###############################################################################
+apiVersion: v1
+kind: Template
+labels:
+  app: erebus
+  template: deploy-erebus
+message: Deploy Erebus
+metadata:
+  name: deploy-erebus
+  annotations:
+    description: Deploy Erebus
+    openshift.io/display-name: Deploy Erebus
+    openshift.io/long-description: Deploy Erebus
+    openshift.io/provider-display-name: ADVLab
+    openshift.io/support-url: https://github.com/advlab/erebus
+    tags: advlab
+objects:
+################################################################################
+#                                  Service                                     #
+################################################################################
+- apiVersion: v1
+  kind: Service
+  metadata:
+    labels:
+      app: erebus
+      monitor: 'true'
+    name: erebus
+  spec:
+    ports:
+      - name: 8080-tcp
+        port: 8080
+        protocol: TCP
+        targetPort: 8080
+    selector:
+      app: erebus
+      deploymentconfig: erebus
+      monitor: 'true'
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {} 
+################################################################################
+#                                   Route                                      #
+################################################################################
+- apiVersion: route.openshift.io/v1
+  kind: Route
+  metadata:
+    labels:
+      app: erebus
+      monitor: 'true'
+    name: erebus
+  spec:
+    port:
+      targetPort: 8080-tcp
+    to:
+      kind: Service
+      name: erebus
+      weight: 100
+    wildcardPolicy: None
+################################################################################
+#                         Deployment Configuration                             #
+################################################################################
+################################################################################
+#                            Template Parameters                               #
+################################################################################
+# parameters:
+# - name: POD_NAME
+#   description: Pod Name
+#   displayName: Pod Name
+#   required: true

@@ -37,11 +37,18 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 	cd erebus
 	```
 
-1. Deploy on OKD
+1. Deploy on OKD using S2I
 
     ```
     oc new-app wildfly:13.0~https://github.com/advlab/erebus.git -l "app=erebus,monitor=true"
     oc expose svc/erebus
+    ```
+
+1. Deploy on OKD using Templates
+
+    ```
+    oc process -f templates/build-erebus.yml | oc apply -f -
+    oc start-build erebus --follow
     ```
 
 # Undeploy from OKD
@@ -54,7 +61,7 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
 # Test DB Console
 
-* Browse to the DB Console URL (e.g. http://erebus-sandbox.openshift.sytes.net/dbconsole) and use the following propertis to connect:
+* Browse to the DB Console URL (e.g. http://erebus-sandbox.openshift.sytes.net/dbconsole) and use the following properties to connect:
 
     * Driver Class: `org.h2.Driver`
     * JDBC URL: `jdbc:h2:file:/tmp/testedb`
