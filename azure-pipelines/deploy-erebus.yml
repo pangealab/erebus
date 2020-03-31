@@ -15,12 +15,6 @@ steps:
    inputs:
     openshiftService: 'openshift'
     version: 'v3.11.0'
-    cmd: 'oc process -f templates/build-erebus.yml | oc apply -f -'
-    cmd: 'oc start-build erebus --wait'
-
- - task: oc-cmd@2
-   displayName: 'Deploy Pod'
-   inputs:
-    openshiftService: 'openshift'
-    version: 'v3.11.0'
-    cmd: 'oc process -f templates/deploy-erebus.yml | oc apply -f -'
+ - script: |
+      oc process -f templates/build-erebus.yml | oc apply -f -
+      oc start-build erebus --wait
