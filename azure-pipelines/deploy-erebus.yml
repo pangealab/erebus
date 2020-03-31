@@ -9,6 +9,7 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+stage:
 - task: Bash@3
   inputs:
     targetType: 'inline'
