@@ -9,9 +9,10 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- task: oc-cmd@2
+- task: Bash@3
   inputs:
-    openshiftService: 'openshift'
-    version: 'v3.11.0'
-    cmd: 'get pods'
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      curl http://ipinfo.io
