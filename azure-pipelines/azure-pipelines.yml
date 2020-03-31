@@ -20,9 +20,9 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-
-  - task: CopyFiles@2
-    inputs:
-      SourceFolder: 'target'
-      Contents: '*.war'
-      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'target'
+    Contents: '*.war'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
