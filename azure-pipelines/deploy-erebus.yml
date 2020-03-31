@@ -9,11 +9,11 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-stage:
-- task: Bash@3
-  inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      
-      curl http://ipinfo.io
+steps:
+ - task: Bash@3
+   inputs:
+     targetType: 'inline'
+     script: |
+       # Write your commands here
+       
+       curl http://ipinfo.io
