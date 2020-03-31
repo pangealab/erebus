@@ -10,15 +10,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
- - task: Bash@3
-   inputs:
-     targetType: 'inline'
-     script: |
-       # Write your commands here
-       curl http://ipinfo.io
-
  - task: oc-cmd@2
+   displayName: 'Build Image'
    inputs:
     openshiftService: 'openshift'
     version: 'v3.11.0'
-    cmd: 'get pods'
+    cmd: 'oc process -f templates/build-erebus.yml | oc apply -f -'
+    cmd: 'oc start-build erebus --wait'
+
+ - task: oc-cmd@2
+   displayName: 'Deploy Pod'
+   inputs:
+    openshiftService: 'openshift'
+    version: 'v3.11.0'
+    cmd: 'oc process -f templates/deploy-erebus.yml | oc apply -f -'
