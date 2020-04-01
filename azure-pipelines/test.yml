@@ -19,5 +19,8 @@ steps:
   displayName: 'Run a multi-line script'
 
 - task: AWSCLI@1
-- script: |
-   aws ec2 describe-regions
+  inputs:
+    awsCredentials: 'advlab'
+    regionName: 'us-east-2'
+    awsCommand: 'ec2'
+    awsSubCommand: 'describe-regions'
