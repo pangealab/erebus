@@ -100,10 +100,13 @@
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>nowlab-erebus-rg</resourceGroup>
           <appName>nowlab-erebus-app</appName>
-          <!-- <pricingTier>B1</pricingTier> -->
-          <!-- Deploy Web App to the existing App Service Plan -->
+          <!-- Use Pricing Tier
+          <pricingTier>B1</pricingTier>
+          -->
+          <!-- Or Use Existing Service Plan 
           <appServicePlanResourceGroup>nowlab-erebus-rg</appServicePlanResourceGroup>
-          <appServicePlanName>nowlab-erebus-sp</appServicePlanName>
+          <appServicePlanName>nowlab-erebus-sp</appServicePlanName> 
+          -->
           <region>eastus</region>
           <runtime>
             <os>linux</os>
