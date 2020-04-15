@@ -12,10 +12,10 @@ variables:
   azureSubscription: '604bbc3a-9fa0-4add-8106-fe1a551ce4e3'
   
   # Web app name
-  webAppName: ''
+  webAppName: 'nowlab-erebus-app'
 
   # Environment name
-  environmentName: ''
+  environmentName: 'nowlab'
   
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
