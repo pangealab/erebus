@@ -15,7 +15,7 @@ variables:
   webAppName: ''
 
   # Environment name
-  environmentName: 'nowlab'
+  environmentName: ''
  
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
