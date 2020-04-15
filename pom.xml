@@ -92,7 +92,7 @@
           </execution> 
         </executions> 
       </plugin>  
-      <plugin>
+      <!-- <plugin>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>azure-webapp-maven-plugin</artifactId>
         <version>1.9.1</version>
@@ -100,27 +100,19 @@
           <schemaVersion>V2</schemaVersion>
           <resourceGroup>nowlab-erebus-rg</resourceGroup>
           <appName>nowlab-erebus-app</appName>
-          <!-- Use Pricing Tier
           <pricingTier>B1</pricingTier>
-          -->
-          <!-- Or Use Existing Service Plan 
-          <appServicePlanResourceGroup>nowlab-erebus-rg</appServicePlanResourceGroup>
-          <appServicePlanName>nowlab-erebus-sp</appServicePlanName> 
-          -->
           <region>eastus</region>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
             <webContainer>TOMCAT 8.5</webContainer>
           </runtime>
-          <!-- Begin of App Settings  -->
           <appSettings>
             <property>
               <name>JAVA_OPTS</name>
               <value>-Dserver.port=80</value>
             </property>
-          </appSettings>
-          <!-- End of App Settings  -->          
+          </appSettings>     
           <deployment>
             <resources>
               <resource>
@@ -132,7 +124,7 @@
             </resources>
           </deployment>
         </configuration>
-      </plugin>
+      </plugin> -->
     </plugins> 
   </build> 
 </project>
