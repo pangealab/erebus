@@ -98,10 +98,13 @@
         <version>1.9.1</version>
         <configuration>
           <schemaVersion>V2</schemaVersion>
-          <resourceGroup>ItemWS-1586793164084-rg</resourceGroup>
-          <appName>ItemWS-1586793164084</appName>
-          <pricingTier>P1v2</pricingTier>
-          <region>westeurope</region>
+          <resourceGroup>nowlab-erebus-rg</resourceGroup>
+          <appName>nowlab-erebus-app</appName>
+          <!-- <pricingTier>B1</pricingTier> -->
+          <!-- Deploy Web App to the existing App Service Plan -->
+          <appServicePlanResourceGroup>nowlab-erebus-rg</appServicePlanResourceGroup>
+          <appServicePlanName>nowlab-erebus-sp</appServicePlanName>
+          <region>eastus</region>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
