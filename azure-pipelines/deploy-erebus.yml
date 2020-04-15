@@ -16,7 +16,7 @@ variables:
 
   # Environment name
   environmentName: ''
-  
+ 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
