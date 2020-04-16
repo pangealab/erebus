@@ -98,10 +98,10 @@
         <artifactId>azure-webapp-maven-plugin</artifactId>
         <version>1.9.1</version>
         <configuration>
+          <appName>nowlab-erebus-app</appName>
           <schemaVersion>V2</schemaVersion>
           <!-- Use Existing Resource Group -->
           <resourceGroup>nowlab-erebus-rg</resourceGroup>
-          <appName>nowlab-erebus-app</appName>
           <!-- Use Existing Service Plan for a B1 Server -->
           <!-- <pricingTier>B1</pricingTier> -->
           <!-- <region>eastus</region> -->
