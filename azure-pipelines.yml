@@ -30,7 +30,17 @@ stages:
     pool:
       vmImage: $(vmImageName)
     
+    # steps:
+    #   - script: |
+    #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
+    #     displayName: 'Run Script'
+
     steps:
-      - script: |
-          echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
-        displayName: 'Run Script'
+    - task: AzureCLI@2
+      inputs:
+        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az --version
+          az account show
