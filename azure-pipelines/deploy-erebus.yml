@@ -29,4 +29,5 @@ stages:
         action: 'Create Or Update Resource Group'
         resourceGroupName: 'nowlab-erebus-rg'
         location: 'eastus'
+        templateLocation: 'Linked artifact'
         deploymentMode: 'Incremental'
