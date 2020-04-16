@@ -10,7 +10,7 @@ trigger:
 variables:
 
   # Variables
-  # azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
+  azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
   webAppName: 'nowlab-erebus-app'
   environmentName: 'nowlab'
   vmImageName: 'ubuntu-latest'
@@ -34,8 +34,8 @@ stages:
     steps:
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
+        azureSubscription: $(azureSubscription)
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az group create -n ${resourceGroup} -l ${regions}
+          az group create -n $(resourceGroup) -l $(region)
