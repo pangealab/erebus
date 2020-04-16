@@ -22,10 +22,10 @@ variables:
 
 stages:
 - stage: Build
-  displayName: Build stage
+  displayName: Build Stage
   jobs:
-  - job: MavenPackageAndPublishArtifacts
-    displayName: Maven Package and Publish Artifacts
+  - job: BuildJob
+    displayName: Build Job
     pool:
       vmImage: $(vmImageName)
     
