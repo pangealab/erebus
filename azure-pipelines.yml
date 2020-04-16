@@ -31,5 +31,5 @@ stages:
     
     steps:
       - script: |
-          date +"%Y%m%d%H%M%S
+          echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
         displayName: 'Run Script'
