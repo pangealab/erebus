@@ -29,18 +29,13 @@ stages:
     displayName: Build Job
     pool:
       vmImage: $(vmImageName)git
-    
+
     # steps:
     #   - script: |
     #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
     #     displayName: 'Run Script'
 
     steps:
-<<<<<<< HEAD
-      - script: |
-          echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
-        displayName: 'Run Script'   
-=======
     - task: AzureCLI@2
       inputs:
         azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
@@ -49,4 +44,3 @@ stages:
         inlineScript: |
           az --version
           az account show
->>>>>>> 48c1d75f48edcf1d00a9efc68a802e2242de5a29
