@@ -13,7 +13,7 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'ce93bbfe-a41f-4f50-b073-5080d872326b'
+  # azureSubscription: 'ce93bbfe-a41f-4f50-b073-5080d872326b'
 
 stages:
 - stage: Deploy 
@@ -27,8 +27,9 @@ stages:
     steps:
     - task: AzureResourceGroupDeployment@2
       inputs:
-        azureSubscription: ${azureSubscription}
+        azureSubscription: 'Pay-As-You-Go Sandbox(1)(ce93bbfe-a41f-4f50-b073-5080d872326b)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: 'nowlab-erebus-rg'
         location: 'eastus'
+        templateLocation: 'Linked artifact'
         deploymentMode: 'Incremental'
