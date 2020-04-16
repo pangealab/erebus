@@ -28,9 +28,9 @@ stages:
   - job: BuildJob
     displayName: Build Job
     pool:
-      vmImage: $(vmImageName)
+      vmImage: $(vmImageName)git
     
     steps:
       - script: |
           echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
-        displayName: 'Run Script'
+        displayName: 'Run Script'   
