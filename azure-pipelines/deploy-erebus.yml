@@ -13,33 +13,20 @@ variables:
   vmImageName: 'ubuntu-latest'
 
 stages:
-- stage: Build
-  displayName: Build stage
+- stage: Deploy 
+  displayName: Deploy Stage
   jobs:
-  - job: MavenPackageAndPublishArtifacts
-    displayName: Maven Package and Publish Artifacts
+  - job: Deploy
+    displayName: Deploy
     pool:
       vmImage: $(vmImageName)
-    
+
     steps:
-    - task: Maven@3
-      displayName: 'Maven Package'
+    - task: AzureResourceGroupDeployment@2
+      displayName: 'Create Resource Group'
       inputs:
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: true
-        testResultsFiles: '**/surefire-reports/TEST-*.xml'
-        goals: 'package'
-
-    - task: CopyFiles@2
-      displayName: 'Copy Files to artifact staging directory'
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**/target/*.?(war|jar)'
-        TargetFolder: $(Build.ArtifactStagingDirectory)
-
-    - upload: $(Build.ArtifactStagingDirectory)
-      artifact: drop
+        azureSubscription: 'Pay-As-You-Go Sandbox(ce93bbfe-a41f-4f50-b073-5080d872326b)'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'nowlab-erebus-rg'
+        location: 'eastus'
+        deploymentMode: 'Incremental'
