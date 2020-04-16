@@ -9,17 +9,12 @@ trigger:
 
 variables:
 
-  # Azure Resource Manager connection created during pipeline creation
+  # Variables
   # azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
-  
-  # Web app name
   webAppName: 'nowlab-erebus-app'
-
-  # Environment name
   environmentName: 'nowlab'
-  
-  # Agent VM image name
   vmImageName: 'ubuntu-latest'
+  resourceGroup: 'nowlab-erebus-rg'
 
 stages:
 - stage: Build
@@ -28,7 +23,7 @@ stages:
   - job: BuildJob
     displayName: Build Job
     pool:
-      vmImage: $(vmImageName)git
+      vmImage: $(vmImageName)
 
     # steps:
     #   - script: |
@@ -42,5 +37,4 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az --version
-          az account show
+          az group create -n "nowlab-erebus-rg" -l "eastus"
