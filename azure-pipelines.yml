@@ -10,7 +10,7 @@ trigger:
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'ccdac091-b280-4063-a795-bc4968da3488'
+  azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
   
   # Web app name
   webAppName: 'nowlab-erebus-app'
@@ -38,7 +38,7 @@ stages:
     steps:
     - task: AzureCLI@2
       inputs:
-        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
+        azureSubscription: ${azureSubscription}
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
