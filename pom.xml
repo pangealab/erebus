@@ -99,12 +99,14 @@
         <version>1.9.1</version>
         <configuration>
           <schemaVersion>V2</schemaVersion>
+          <!-- Use Existing Resource Group -->
           <resourceGroup>nowlab-erebus-rg</resourceGroup>
           <appName>nowlab-erebus-app</appName>
+          <!-- Use Existing Service Plan for a B1 Server -->
+          <!-- <pricingTier>B1</pricingTier> -->
+          <!-- <region>eastus</region> -->
           <appServicePlanName>nowlab-erebus-sp</appServicePlanName>
           <appServicePlanResourceGroup>nowlab-erebus-rg</appServicePlanResourceGroup>     
-          <!-- <pricingTier>B1</pricingTier> -->
-          <region>eastus</region>
           <runtime>
             <os>linux</os>
             <javaVersion>jre8</javaVersion>
