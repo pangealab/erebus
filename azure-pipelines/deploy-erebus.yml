@@ -22,12 +22,6 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
-    - task: AzureResourceGroupDeployment@2
+    - script: |
+        az group create -n "nowlab-erebus-rg" -l "eastus"
       displayName: 'Create Resource Group'
-      inputs:
-        azureSubscription: 'Pay-As-You-Go Sandbox(ce93bbfe-a41f-4f50-b073-5080d872326b)'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'nowlab-erebus-rg'
-        location: 'eastus'
-        templateLocation: 'Linked artifact'
-        deploymentMode: 'Incremental'
