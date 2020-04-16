@@ -13,7 +13,7 @@ variables:
   vmImageName: 'ubuntu-latest'
 
   # Azure Resource Manager connection created during pipeline creation
-  azureSubscription: 'Pay-As-You-Go Sandbox(ce93bbfe-a41f-4f50-b073-5080d872326b)'  
+  azureSubscription: 'ce93bbfe-a41f-4f50-b073-5080d872326b'
 
 stages:
 - stage: Deploy 
