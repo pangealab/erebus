@@ -27,7 +27,7 @@ stages:
     steps:
     - task: AzureResourceGroupDeployment@2
       inputs:
-        azureSubscription: 'Pay-As-You-Go Sandbox(1)(ce93bbfe-a41f-4f50-b073-5080d872326b)'
+        azureSubscription: 'Pay-As-You-Go Sandbox(ce93bbfe-a41f-4f50-b073-5080d872326b)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: 'nowlab-erebus-rg'
         location: 'eastus'
