@@ -43,8 +43,10 @@ stages:
 
     - task: AzureResourceGroupDeployment@2
       inputs:
+        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
         action: 'Create Or Update Resource Group'
         resourceGroupName: 'nowlab-erebus-rg'
         location: 'East US'
         templateLocation: 'Linked artifact'
+        csmFile: 'xxx'
         deploymentMode: 'Incremental'
