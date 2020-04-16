@@ -12,6 +12,9 @@ variables:
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
 
+  # Azure Resource Manager connection created during pipeline creation
+  azureSubscription: 'ce93bbfe-a41f-4f50-b073-5080d872326b'  
+
 stages:
 - stage: Deploy 
   displayName: Deploy Stage
@@ -22,6 +25,8 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
-    - script: |
-        az group create -n "nowlab-erebus-rg" -l "eastus"
-      displayName: 'Create Resource Group'
+    - task: AzureCLI@1
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptLocation: 'inlineScript'
+        inlineScript: 'az group create -n "nowlab-erebus-rg" -l "eastus"'
