@@ -38,4 +38,5 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
+          set -x
           az group create -n $(resourceGroup) -l $(region)
