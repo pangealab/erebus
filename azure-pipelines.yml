@@ -12,7 +12,7 @@ variables:
   azureSubscription: '3dde3ecf-fe8f-4720-bb72-bb0e88d0fe24'
   
   # Web app name
-  webAppName: ''
+  webAppName: 'nowlab-erebus-app'
 
   # Environment name
   environmentName: 'nowlab'
