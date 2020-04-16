@@ -15,6 +15,7 @@ variables:
   environmentName: 'nowlab'
   vmImageName: 'ubuntu-latest'
   resourceGroup: 'nowlab-erebus-rg'
+  region: 'eastus'
 
 stages:
 - stage: Build
@@ -37,4 +38,4 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az group create -n "nowlab-erebus-rg" -l "eastus"
+          az group create -n ${resourceGroup} -l ${regions}
