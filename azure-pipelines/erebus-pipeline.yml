@@ -23,16 +23,17 @@ pool:
   vmImage: 'ubuntu-latest'
 
 stages:
-  - stage: Tools
-    jobs:
-      - job: Tools
-        steps:
-        - bash: |
-            set -x # Echo Commands
-            # Instal NOWCLI
-            pip3 install setuptools
-            pip3 install nowcli==1.0.4
-          displayName: 'Install NOWCLI'
+
+  # - stage: Tools
+  #   jobs:
+  #     - job: Tools
+  #       steps:
+  #       - bash: |
+  #           set -x # Echo Commands
+  #           # Instal NOWCLI
+  #           pip3 install setuptools
+  #           pip3 install nowcli==1.0.4
+  #         displayName: 'Install NOWCLI'
 
   - stage: Build
     jobs:
@@ -58,6 +59,7 @@ stages:
             TargetFolder: $(Build.ArtifactStagingDirectory)
 
         - publish: '$(Build.ArtifactStagingDirectory)'
+          displayName: 'Publish Files'
           artifact: drop
  
   # - stage: Init
