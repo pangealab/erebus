@@ -24,44 +24,16 @@ pool:
 
 stages:
 
-  # - stage: Tools
-  #   jobs:
-  #     - job: Tools
-  #       steps:
-  #       - bash: |
-  #           set -x # Echo Commands
-  #           # Instal NOWCLI
-  #           pip3 install setuptools
-  #           pip3 install nowcli==1.0.4
-  #         displayName: 'Install NOWCLI'
-
-  - stage: Build
+  - stage: Tools
     jobs:
-      - job: Build
+      - job: Tools
         steps:
-        - task: Maven@3
-          displayName: 'Maven Package'
-          inputs:
-            mavenPomFile: 'pom.xml'
-            mavenOptions: '-Xmx3072m'
-            javaHomeOption: 'JDKVersion'
-            jdkVersionOption: '1.8'
-            jdkArchitectureOption: 'x64'
-            publishJUnitResults: true
-            testResultsFiles: '**/surefire-reports/TEST-*.xml'
-            goals: 'package'
-            options: '-DskipTests=true'
-
-        - task: CopyFiles@2
-          displayName: 'Stage Files'
-          inputs:
-            SourceFolder: '$(System.DefaultWorkingDirectory)'
-            Contents: '**/target/*.?(war|jar)'
-            TargetFolder: $(Build.ArtifactStagingDirectory)
-
-        - publish: '$(Build.ArtifactStagingDirectory)'
-          displayName: 'Publish Files'
-          artifact: drop
+        - bash: |
+            set -x # Echo Commands
+            # Instal NOWCLI
+            pip3 install setuptools
+            pip3 install nowcli==1.0.4
+          displayName: 'Install NOWCLI'
  
   - stage: Init
     jobs:
