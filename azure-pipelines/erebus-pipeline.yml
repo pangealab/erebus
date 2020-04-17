@@ -99,7 +99,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup)
+              az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
         - task: AzureWebApp@1
           inputs:
             azureSubscription: $(azureSubscription)
