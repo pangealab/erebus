@@ -100,3 +100,10 @@ stages:
             inlineScript: |
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup)
+        - task: AzureWebApp@1
+          inputs:
+            azureSubscription: $(azureSubscription)
+            appType: 'webAppLinux'
+            appName: 'nowlab-erebus-app'
+            package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+            appSettings: 'JAVA_OPTS=-Dserver.port=80'
