@@ -45,9 +45,11 @@ stages:
           displayName: 'Stage Files'
           inputs:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
-            Contents: '**/target/*.?(war|jar)'
-            TargetFolder: $(Build.ArtifactStagingDirectory)
+            Contents: '/target/*.war'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
         - publish: '$(Build.ArtifactStagingDirectory)'
           displayName: 'Publish Files'
-          artifact: drop
+          artifact: erebus
+
+        
