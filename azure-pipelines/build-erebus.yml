@@ -50,4 +50,4 @@ stages:
 
         - publish: '$(Build.ArtifactStagingDirectory)'
           displayName: 'Publish Files'
-          artifact: erebus        
+          artifact: erebus
