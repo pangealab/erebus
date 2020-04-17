@@ -28,6 +28,8 @@ stages:
           displayName: 'Run a multi-line script'
 
   - stage: Stage2
+    dependsOn: Stage1 
+    condition: succeed()
     jobs:
       - job: Stage2Job1
         steps:
