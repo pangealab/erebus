@@ -9,7 +9,7 @@ trigger:
 
 variables:
 
-  # Variables
+  ### Variables ###
   azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
   webAppName: 'nowlab-erebus-app'
   environmentName: 'nowlab'
@@ -24,6 +24,7 @@ pool:
 
 stages:
 
+  ### Install Tools Stage ###
   - stage: Tools
     jobs:
       - job: Tools
@@ -35,10 +36,13 @@ stages:
             pip3 install nowcli==1.0.4
           displayName: 'Install NOWCLI'
  
+  ### Initialize Azure Stage ###
   - stage: Init
     jobs:
       - job: Init
-        steps:          
+        steps:
+
+        ### Create Resource Group  ###
         - task: AzureCLI@2
           displayName: 'Create Resource Group'
           inputs:
@@ -49,6 +53,7 @@ stages:
               set -x # Echo Commands
               az group create -n $(resourceGroup) -l $(region)
 
+        ### Create Service Plan  ###
         - task: AzureCLI@2
           displayName: 'Create Service Plan'
           inputs:
@@ -59,10 +64,13 @@ stages:
               set -x # Echo Commands
               az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux
 
+  ### Deploly App Stage ###
   - stage: Deploy
     jobs:
       - job: Deploy
         steps:
+
+        ### Pre-Create App ###
         - task: AzureCLI@2
           displayName: 'Create App'
           inputs:
@@ -72,10 +80,14 @@ stages:
             inlineScript: |
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
+
+        ### Download WAR ###
         - task: DownloadPipelineArtifact@2
           displayName: 'Download App'
           inputs:
             artifact: drop
+        
+        ### Deploy WAR to App ###
         - task: AzureWebApp@1
           displayName: 'Deploy App'
           inputs:
