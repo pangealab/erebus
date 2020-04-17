@@ -15,30 +15,26 @@ pool:
 stages:
   - stage: Stage1
     jobs:
-      - job: Stage1Job1
+      - job: Job1
         steps:
         - script: echo Hello, world!
+          name: Step1
           displayName: 'Run a one-line script'
-
-      - job: Stage1Job2
-        steps:
         - script: |
             echo Add other tasks to build, test, and deploy your project.
             echo See https://aka.ms/yaml
+          name: Step2
           displayName: 'Run a multi-line script'
 
   - stage: Stage2
-    dependsOn: Stage1 
-    condition: succeeded()
     jobs:
-      - job: Stage2Job1
+      - job: Job2
         steps:
         - script: echo Hello, world!
+          name: Step3
           displayName: 'Run a one-line script'
-
-      - job: Stage2Job2
-        steps:
         - script: |
             echo Add other tasks to build, test, and deploy your project.
             echo See https://aka.ms/yaml
+          name: Step4
           displayName: 'Run a multi-line script'
