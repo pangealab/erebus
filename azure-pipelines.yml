@@ -26,17 +26,27 @@ stages:
     pool:
       vmImage: $(vmImageName)
 
-    # steps:
+    steps:
+
     #   - script: |
     #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
     #     displayName: 'Run Script'
 
-    steps:
-    - task: AzureCLI@2
+    # - task: AzureCLI@2
+    #   inputs:
+    #     azureSubscription: $(azureSubscription)
+    #     scriptType: 'bash'
+    #     scriptLocation: 'inlineScript'
+    #     inlineScript: |
+    #       set -x
+    #       az group create -n $(resourceGroup) -l $(region)
+
+    - task: AzureResourceGroupDeployment@2
       inputs:
-        azureSubscription: $(azureSubscription)
-        scriptType: 'bash'
-        scriptLocation: 'inlineScript'
-        inlineScript: |
-          set -x
-          az group create -n $(resourceGroup) -l $(region)
+        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
+        action: 'Create Or Update Resource Group'
+        resourceGroupName: 'nowlab-erebus-rg'
+        location: 'East US'
+        templateLocation: 'Linked artifact'
+        csmFile: 'xxx'
+        deploymentMode: 'Incremental'
