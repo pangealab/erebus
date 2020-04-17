@@ -29,7 +29,7 @@ stages:
 
   - stage: Stage2
     dependsOn: Stage1 
-    condition: succeed()
+    condition: succeeded()
     jobs:
       - job: Stage2Job1
         steps:
