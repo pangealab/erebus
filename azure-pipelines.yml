@@ -33,14 +33,12 @@ stages:
     #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
     #     displayName: 'Run Script'
 
-    - task: AzureCLI@2
-      displayName: Create Resource Group
-      inputs:
-        azureSubscription: $(azureSubscription)
-        scriptType: 'bash'
-        scriptLocation: 'inlineScript'
-        inlineScript: |
-          set -x
-          az group create -n $(resourceGroup) -l $(region)   
-
-          
+    # - task: AzureCLI@2
+    #   displayName: Create Resource Group
+    #   inputs:
+    #     azureSubscription: $(azureSubscription)
+    #     scriptType: 'bash'
+    #     scriptLocation: 'inlineScript'
+    #     inlineScript: |
+    #       set -x
+    #       az group create -n $(resourceGroup) -l $(region)
