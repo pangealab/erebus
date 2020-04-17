@@ -100,7 +100,12 @@ stages:
             inlineScript: |
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
+        - task: DownloadPipelineArtifact@2
+          displayName: 'Download App'
+          inputs:
+            artifact: drop
         - task: AzureWebApp@1
+          displayName: 'Deploy App'
           inputs:
             azureSubscription: $(azureSubscription)
             appType: 'webAppLinux'
