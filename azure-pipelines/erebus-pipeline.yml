@@ -63,29 +63,29 @@ stages:
           displayName: 'Publish Files'
           artifact: drop
  
-  # - stage: Init
-  #   jobs:
-  #     - job: Init
-  #       steps:          
-  #       - task: AzureCLI@2
-  #         displayName: 'Create Resource Group'
-  #         inputs:
-  #           azureSubscription: $(azureSubscription)
-  #           scriptType: 'bash'
-  #           scriptLocation: 'inlineScript'
-  #           inlineScript: |
-  #             set -x # Echo Commands
-  #             az group create -n $(resourceGroup) -l $(region)
+  - stage: Init
+    jobs:
+      - job: Init
+        steps:          
+        - task: AzureCLI@2
+          displayName: 'Create Resource Group'
+          inputs:
+            azureSubscription: $(azureSubscription)
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: |
+              set -x # Echo Commands
+              az group create -n $(resourceGroup) -l $(region)
 
-  #       - task: AzureCLI@2
-  #         displayName: 'Create Service Plan'
-  #         inputs:
-  #           azureSubscription: $(azureSubscription)
-  #           scriptType: 'bash'
-  #           scriptLocation: 'inlineScript'
-  #           inlineScript: |
-  #             set -x # Echo Commands
-  #             az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux
+        - task: AzureCLI@2
+          displayName: 'Create Service Plan'
+          inputs:
+            azureSubscription: $(azureSubscription)
+            scriptType: 'bash'
+            scriptLocation: 'inlineScript'
+            inlineScript: |
+              set -x # Echo Commands
+              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux
 
   - stage: Deploy
     jobs:
