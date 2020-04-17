@@ -50,6 +50,7 @@ stages:
             publishJUnitResults: true
             testResultsFiles: '**/surefire-reports/TEST-*.xml'
             goals: 'package'
+            options: '-DskipTests=true'
 
         - task: CopyFiles@2
           displayName: 'Stage Files'
