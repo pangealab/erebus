@@ -17,6 +17,7 @@ variables:
   resourceGroup: 'nowlab-erebus-rg'
   servicePlan: 'nowlab-erebus-sp'
   region: 'eastus'
+  sku: 'B1'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -37,3 +38,13 @@ steps:
     inlineScript: |
       set -x
       az group create -n $(resourceGroup) -l $(region)
+
+- task: AzureCLI@2
+  displayName: Create Service Plan
+  inputs:
+    azureSubscription: $(azureSubscription)
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      set -x
+      az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux     
