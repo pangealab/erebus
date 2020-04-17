@@ -48,5 +48,5 @@ stages:
         resourceGroupName: 'nowlab-erebus-rg'
         location: 'East US'
         templateLocation: 'Linked artifact'
-        csmFile: 'xxx'
+        csmFile: 'nowlab-erebus-rg.yml'
         deploymentMode: 'Incremental'
