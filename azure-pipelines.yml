@@ -29,6 +29,9 @@ stages:
 
     steps:
 
+    - bash: |
+        echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
+  
     #   - script: |
     #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
     #     displayName: 'Run Script'
