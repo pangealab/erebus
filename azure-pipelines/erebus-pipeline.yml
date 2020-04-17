@@ -56,6 +56,9 @@ stages:
             SourceFolder: '$(System.DefaultWorkingDirectory)'
             Contents: '**/target/*.?(war|jar)'
             TargetFolder: $(Build.ArtifactStagingDirectory)
+
+        - publish: '$(Build.ArtifactStagingDirectory)'
+          artifact: drop
  
   # - stage: Init
   #   jobs:
