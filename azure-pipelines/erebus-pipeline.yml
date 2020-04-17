@@ -100,12 +100,3 @@ stages:
             inlineScript: |
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup)
-        - task: AzureWebApp@1
-          displayName: 'Deploy App'
-          inputs:
-            azureSubscription: '$(azureSubscription)'
-            appType: 'webAppLinux'
-            appName: '$(webAppName)'
-            package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
-            runtimeStack: 'TOMCAT|8.5-jre8'
-            appSettings: 'JAVA_OPTS=-Dserver.port=80'
