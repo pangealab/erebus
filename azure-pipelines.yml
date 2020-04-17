@@ -15,6 +15,7 @@ variables:
   environmentName: 'nowlab'
   vmImageName: 'ubuntu-latest'
   resourceGroup: 'nowlab-erebus-rg'
+  servicePlan: 'nowlab-erebus-sp'
   region: 'eastus'
 
 stages:
@@ -32,21 +33,14 @@ stages:
     #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
     #     displayName: 'Run Script'
 
-    # - task: AzureCLI@2
-    #   inputs:
-    #     azureSubscription: $(azureSubscription)
-    #     scriptType: 'bash'
-    #     scriptLocation: 'inlineScript'
-    #     inlineScript: |
-    #       set -x
-    #       az group create -n $(resourceGroup) -l $(region)
-
-    - task: AzureResourceGroupDeployment@2
+    - task: AzureCLI@2
+      displayName: Create Resource Group
       inputs:
-        azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
-        action: 'Create Or Update Resource Group'
-        resourceGroupName: 'nowlab-erebus-rg'
-        location: 'East US'
-        templateLocation: 'Linked artifact'
-        csmFile: 'nowlab-erebus-rg.json'
-        deploymentMode: 'Incremental'
+        azureSubscription: $(azureSubscription)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          set -x
+          az group create -n $(resourceGroup) -l $(region)   
+
+          
