@@ -29,6 +29,7 @@ stages:
 
     steps:
     - bash: |
+        pip3 install setuptools
         pip3 install nowcli==1.0.4
       displayName: 'Run Script'
   
