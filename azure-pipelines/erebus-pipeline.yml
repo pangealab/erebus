@@ -33,27 +33,50 @@ stages:
             pip3 install setuptools
             pip3 install nowcli==1.0.4
           displayName: 'Install NOWCLI'
-  
-  - stage: Init
-    jobs:
-      - job: Init
-        steps:          
-        - task: AzureCLI@2
-          displayName: 'Create Resource Group'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              set -x # Echo Commands
-              az group create -n $(resourceGroup) -l $(region)
 
-        - task: AzureCLI@2
-          displayName: 'Create Service Plan'
+  - stage: Build
+    jobs:
+      - job: Build
+        steps:
+        - task: Maven@3
+          displayName: 'Maven Package'
           inputs:
-            azureSubscription: $(azureSubscription)
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              set -x # Echo Commands
-              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux                  
+            mavenPomFile: 'pom.xml'
+            mavenOptions: '-Xmx3072m'
+            javaHomeOption: 'JDKVersion'
+            jdkVersionOption: '1.8'
+            jdkArchitectureOption: 'x64'
+            publishJUnitResults: true
+            testResultsFiles: '**/surefire-reports/TEST-*.xml'
+            goals: 'package'
+
+        - task: CopyFiles@2
+          displayName: 'Stage Files'
+          inputs:
+            SourceFolder: '$(System.DefaultWorkingDirectory)'
+            Contents: '**/target/*.?(war|jar)'
+            TargetFolder: $(Build.ArtifactStagingDirectory)
+ 
+  # - stage: Init
+  #   jobs:
+  #     - job: Init
+  #       steps:          
+  #       - task: AzureCLI@2
+  #         displayName: 'Create Resource Group'
+  #         inputs:
+  #           azureSubscription: $(azureSubscription)
+  #           scriptType: 'bash'
+  #           scriptLocation: 'inlineScript'
+  #           inlineScript: |
+  #             set -x # Echo Commands
+  #             az group create -n $(resourceGroup) -l $(region)
+
+  #       - task: AzureCLI@2
+  #         displayName: 'Create Service Plan'
+  #         inputs:
+  #           azureSubscription: $(azureSubscription)
+  #           scriptType: 'bash'
+  #           scriptLocation: 'inlineScript'
+  #           inlineScript: |
+  #             set -x # Echo Commands
+  #             az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux                  
