@@ -22,29 +22,39 @@ variables:
 pool:
   vmImage: 'ubuntu-latest'
 
-steps:
-- bash: |
-    set -x
-    pip3 install setuptools
-    pip3 install nowcli==1.0.4
-  displayName: 'Install NOWCLI'
+stages:
+  - stage: Tools
+    jobs:
+      - job: Tools
+        steps:
+        - bash: |
+            set -x # Echo Commands
+            # Instal NOWCLI
+            pip3 install setuptools
+            pip3 install nowcli==1.0.4
+          displayName: 'Install NOWCLI'
 
-- task: AzureCLI@2
-  displayName: Create Resource Group
-  inputs:
-    azureSubscription: $(azureSubscription)
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      set -x
-      az group create -n $(resourceGroup) -l $(region)
+    stages:
+      - stage: Init
+        jobs:
+          - job: Init
+            steps:          
+            - task: AzureCLI@2
+              displayName: 'Create Resource Group'
+              inputs:
+                azureSubscription: $(azureSubscription)
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  set -x # Echo Commands
+                  az group create -n $(resourceGroup) -l $(region)
 
-- task: AzureCLI@2
-  displayName: Create Service Plan
-  inputs:
-    azureSubscription: $(azureSubscription)
-    scriptType: 'bash'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      set -x
-      az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux     
+            - task: AzureCLI@2
+              displayName: 'Create Service Plan'
+              inputs:
+                azureSubscription: $(azureSubscription)
+                scriptType: 'bash'
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  set -x # Echo Commands
+                  az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux                  
