@@ -18,6 +18,7 @@ variables:
   servicePlan: 'nowlab-erebus-sp'
   region: 'eastus'
 
+stages:
 - stage: Build
   displayName: Build Stage
   jobs:
