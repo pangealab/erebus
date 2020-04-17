@@ -28,14 +28,13 @@ stages:
       vmImage: $(vmImageName)
 
     steps:
-
     - bash: |
-        echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
+        az group create -n $(resourceGroup) -l $(region)
       displayName: 'Run Script'
   
-    #   - script: |
-    #       echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
-    #     displayName: 'Run Script'
+    # - script: |
+    #     echo "Date Timestamp is: $(date +%Y%m%d%H%M%S)"
+    #   displayName: 'Run Script'
 
     # - task: AzureCLI@2
     #   displayName: Create Resource Group
