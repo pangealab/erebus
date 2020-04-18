@@ -13,11 +13,11 @@ variables:
   accountName: 'stage'
   applicationName: 'erebus'
   azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-  prefix: $(accountName')-$('applicationName')
-  webAppName: $(prefix)-app
-  resourceGroup: $(prefix)-rf
-  servicePlan: $(prefix)-sp
-  vmImageName: "ubuntu-latest"
+  prefix: 'none'
+  webAppName: 'stage-erebus-app'
+  resourceGroup: 'stage-erebus-rg'
+  servicePlan: 'stage-erebus-sp'
+  vmImageName: 'ubuntu-latest'
   region: 'eastus'
   sku: 'B1'
 
@@ -53,7 +53,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az group create -n $(resourceGroup) -l $(region)
+              az group create -n $RESOURCEGROUP -l $REGION
 
         ### Create Service Plan  ###
         - task: AzureCLI@2
@@ -64,7 +64,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux
+              az appservice plan create -n $SERVICEPLAN -g $RESOURCEGROUP -l $REGION --sku $SKU --is-linux
 
   ### Deploly App Stage ###
   - stage: Deploy
@@ -81,7 +81,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
+              az webapp create -n $WEBAPPNAME -p $SERVICEPLAN -g $RESOURCEGROUP --runtime 'TOMCAT|8.5-jre8'
 
         ### Download WAR ###
         - task: DownloadPipelineArtifact@2
