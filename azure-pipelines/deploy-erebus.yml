@@ -10,12 +10,14 @@ trigger:
 variables:
 
   ### Variables ###
-  azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-  webAppName: 'nowlab-erebus-app'
-  environmentName: 'nowlab'
-  vmImageName: 'ubuntu-latest'
-  resourceGroup: 'nowlab-erebus-rg'
-  servicePlan: 'nowlab-erebus-sp'
+  accountName: "stage"
+  applicationName: "erebus"
+  azureSubscription: "stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)"
+  prefix: "[concat(variables('accountName'),'-'',variables('applicationName'))]"
+  webAppName: "[concat(variables('prefix','-app'))]"
+  resourceGroup: "[concat(variables('prefix','-rg'))]"
+  servicePlan: "[concat(variables('prefix','-sp'))]"
+  vmImageName: "ubuntu-latest"
   region: 'eastus'
   sku: 'B1'
 
