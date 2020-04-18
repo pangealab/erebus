@@ -53,7 +53,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az group create -n $RESOURCEGROUP -l $REGION
+              az group create -n $(resourceGroup) -l $(region)
 
         ### Create Service Plan  ###
         - task: AzureCLI@2
@@ -64,7 +64,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az appservice plan create -n $SERVICEPLAN -g $RESOURCEGROUP -l $REGION --sku $SKU --is-linux
+              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $SKU --is-linux
 
   ### Deploly App Stage ###
   - stage: Deploy
@@ -81,7 +81,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az webapp create -n $WEBAPPNAME -p $SERVICEPLAN -g $RESOURCEGROUP --runtime 'TOMCAT|8.5-jre8'
+              az webapp create -n $(webAppName) -n $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
 
         ### Download WAR ###
         - task: DownloadPipelineArtifact@2
