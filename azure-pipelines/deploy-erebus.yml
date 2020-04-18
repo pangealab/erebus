@@ -83,11 +83,11 @@ stages:
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
 
-        ### Download WAR ###
-        - task: DownloadPipelineArtifact@2
-          displayName: 'Download App'
-          inputs:
-            artifact: drop
+        # ### Download WAR ###
+        # - task: DownloadPipelineArtifact@2
+        #   displayName: 'Download App'
+        #   inputs:
+        #     artifact: drop
         
         # ### Deploy WAR to App ###
         # - task: AzureWebApp@1
