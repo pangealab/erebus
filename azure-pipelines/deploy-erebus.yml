@@ -81,7 +81,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az webapp create -n $(webAppName) -n $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
+              az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
 
         ### Download WAR ###
         - task: DownloadPipelineArtifact@2
