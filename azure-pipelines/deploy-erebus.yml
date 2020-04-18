@@ -10,13 +10,13 @@ trigger:
 variables:
 
   ### Variables ###
-  accountName: "stage"
-  applicationName: "erebus"
-  azureSubscription: "stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)"
-  prefix: "[concat(variables('accountName'),'-'',variables('applicationName'))]"
-  webAppName: "[concat(variables('prefix','-app'))]"
-  resourceGroup: "[concat(variables('prefix','-rg'))]"
-  servicePlan: "[concat(variables('prefix','-sp'))]"
+  accountName: 'stage'
+  applicationName: 'erebus'
+  azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  prefix: $(accountName')-$('applicationName')
+  webAppName: $(prefix)-app
+  resourceGroup: $(prefix)-rf
+  servicePlan: $(prefix)-sp
   vmImageName: "ubuntu-latest"
   region: 'eastus'
   sku: 'B1'
