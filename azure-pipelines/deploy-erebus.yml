@@ -10,12 +10,14 @@ trigger:
 variables:
 
   ### Variables ###
-  azureSubscription: 'fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7'
-  webAppName: 'nowlab-erebus-app'
-  environmentName: 'nowlab'
+  accountName: 'stage'
+  applicationName: 'erebus'
+  azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  prefix: '$(accountName)-$(applicationName)'
+  webAppName: '$(prefix)-app'
+  resourceGroup: '$(prefix)-rg'
+  servicePlan: '$(prefix)-sp'
   vmImageName: 'ubuntu-latest'
-  resourceGroup: 'nowlab-erebus-rg'
-  servicePlan: 'nowlab-erebus-sp'
   region: 'eastus'
   sku: 'B1'
 
@@ -62,7 +64,7 @@ stages:
             scriptLocation: 'inlineScript'
             inlineScript: |
               set -x # Echo Commands
-              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $(sku) --is-linux
+              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $SKU --is-linux
 
   ### Deploly App Stage ###
   - stage: Deploy
@@ -81,18 +83,18 @@ stages:
               set -x # Echo Commands
               az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
 
-        ### Download WAR ###
-        - task: DownloadPipelineArtifact@2
-          displayName: 'Download App'
-          inputs:
-            artifact: drop
+        # ### Download WAR ###
+        # - task: DownloadPipelineArtifact@2
+        #   displayName: 'Download App'
+        #   inputs:
+        #     artifact: drop
         
-        ### Deploy WAR to App ###
-        - task: AzureWebApp@1
-          displayName: 'Deploy App'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            appType: 'webAppLinux'
-            appName: 'nowlab-erebus-app'
-            package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
-            appSettings: 'JAVA_OPTS=-Dserver.port=80'
+        # ### Deploy WAR to App ###
+        # - task: AzureWebApp@1
+        #   displayName: 'Deploy App'
+        #   inputs:
+        #     azureSubscription: $(azureSubscription)
+        #     appType: 'webAppLinux'
+        #     appName: 'nowlab-erebus-app'
+        #     package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+        #     appSettings: 'JAVA_OPTS=-Dserver.port=80'

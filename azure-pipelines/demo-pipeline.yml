@@ -7,7 +7,17 @@ trigger:
 - none
 
 variables:
+
+  accountName: 'stage'
+  applicationName: 'erebus'
+  azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  prefix: '$(accountName)-$(applicationName)'
+  webAppName: '$(prefix)-app'
+  resourceGroup: '$(prefix)-rg'
+  servicePlan: '$(prefix)-rg'
   vmImageName: 'ubuntu-latest'
+  region: 'eastus'
+  sku: 'B1'  
 
 pool:
   vmImage: $(vmImageName)
@@ -23,6 +33,7 @@ stages:
         - script: |
             echo Add other tasks to build, test, and deploy your project.
             echo See https://aka.ms/yaml
+            echo Web App Name is: $(webAppName)
           name: Step2
           displayName: 'Run a multi-line script'
 

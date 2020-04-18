@@ -10,14 +10,9 @@ trigger:
 variables:
 
   # Variables
-  azureSubscription: 'Pay-As-You-Go Sandbox(fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7)'
-  webAppName: 'nowlab-erebus-app'
-  environmentName: 'nowlab'
-  vmImageName: 'ubuntu-latest'
-  resourceGroup: 'nowlab-erebus-rg'
-  servicePlan: 'nowlab-erebus-sp'
-  region: 'eastus'
-  sku: 'B1'
+  key1: 'value1'
+  key2: 'value2'
+  key3: 'value3'
 
 pool:
   vmImage: 'ubuntu-latest'
