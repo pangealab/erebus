@@ -16,7 +16,7 @@ variables:
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
   resourceGroup: '$(prefix)-rg'
-  servicePlan: '$(prefix)-rg'
+  servicePlan: '$(prefix)-sp'
   vmImageName: 'ubuntu-latest'
   region: 'eastus'
   sku: 'B1'
@@ -89,12 +89,12 @@ stages:
           inputs:
             artifact: drop
         
-        ### Deploy WAR to App ###
-        - task: AzureWebApp@1
-          displayName: 'Deploy App'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            appType: 'webAppLinux'
-            appName: 'nowlab-erebus-app'
-            package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
-            appSettings: 'JAVA_OPTS=-Dserver.port=80'
+        # ### Deploy WAR to App ###
+        # - task: AzureWebApp@1
+        #   displayName: 'Deploy App'
+        #   inputs:
+        #     azureSubscription: $(azureSubscription)
+        #     appType: 'webAppLinux'
+        #     appName: 'nowlab-erebus-app'
+        #     package: '$(Pipeline.Workspace)/drop/**/target/*.?(war|jar)'
+        #     appSettings: 'JAVA_OPTS=-Dserver.port=80'
