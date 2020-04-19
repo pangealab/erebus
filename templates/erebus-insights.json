@@ -1,5 +1,5 @@
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "name": {
@@ -21,7 +21,8 @@
             "type": "microsoft.insights/components",
             "location": "[resourceGroup().location]",
             "tags": {
-                "app": "erebus"
+                "app": "erebus",
+                "service": "furballs"
             },
             "apiVersion": "2014-08-01",
             "properties": {
