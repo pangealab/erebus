@@ -1,13 +1,13 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "sites_nowlab_erebus_app_name": {
-            "defaultValue": "nowlab-erebus-app",
+        "sites_stage_erebus_app_name": {
+            "defaultValue": "stage-erebus-app",
             "type": "String"
         },
-        "serverfarms_nowlab_erebus_sp_externalid": {
-            "defaultValue": "/subscriptions/fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7/resourceGroups/nowlab-erebus-rg/providers/Microsoft.Web/serverfarms/nowlab-erebus-sp",
+        "serverfarms_stage_erebus_sp_externalid": {
+            "defaultValue": "/subscriptions/fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7/resourceGroups/stage-erebus-rg/providers/Microsoft.Web/serverfarms/stage-erebus-sp",
             "type": "String"
         }
     },
@@ -16,7 +16,7 @@
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
-            "name": "[parameters('sites_nowlab_erebus_app_name')]",
+            "name": "[parameters('sites_stage_erebus_app_name')]",
             "location": "East US",
             "tags": {
                 "app": "erebus"
@@ -26,17 +26,17 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('sites_nowlab_erebus_app_name'), '.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_stage_erebus_app_name'), '.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('sites_nowlab_erebus_app_name'), '.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('sites_stage_erebus_app_name'), '.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_nowlab_erebus_sp_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_stage_erebus_sp_externalid')]",
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
@@ -53,10 +53,10 @@
         {
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_nowlab_erebus_app_name'), '/web')]",
+            "name": "[concat(parameters('sites_stage_erebus_app_name'), '/web')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nowlab_erebus_app_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
             "tags": {
                 "app": "erebus"
@@ -81,7 +81,7 @@
                 "httpLoggingEnabled": true,
                 "logsDirectorySizeLimit": 100,
                 "detailedErrorLoggingEnabled": false,
-                "publishingUsername": "$nowlab-erebus-app",
+                "publishingUsername": "$stage-erebus-app",
                 "scmType": "None",
                 "use32BitWorkerProcess": true,
                 "webSocketsEnabled": false,
@@ -128,10 +128,10 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_nowlab_erebus_app_name'), '/3513ae2ad11f40a8899318124930898d')]",
+            "name": "[concat(parameters('sites_stage_erebus_app_name'), '/3513ae2ad11f40a8899318124930898d')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nowlab_erebus_app_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
             "properties": {
                 "status": 4,
@@ -147,13 +147,13 @@
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_nowlab_erebus_app_name'), '/', parameters('sites_nowlab_erebus_app_name'), '.azurewebsites.net')]",
+            "name": "[concat(parameters('sites_stage_erebus_app_name'), '/', parameters('sites_stage_erebus_app_name'), '.azurewebsites.net')]",
             "location": "East US",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/sites', parameters('sites_nowlab_erebus_app_name'))]"
+                "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
             "properties": {
-                "siteName": "nowlab-erebus-app",
+                "siteName": "stage-erebus-app",
                 "hostNameType": "Verified"
             }
         }
