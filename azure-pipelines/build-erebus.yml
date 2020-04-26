@@ -9,6 +9,10 @@ trigger:
 
 variables:
 
+  # Version
+  Version: 1.0.0
+  versionPublish: $[counter(variables['Version'], 0)]
+
   # Variables
   key1: 'value1'
   key2: 'value2'
@@ -55,5 +59,5 @@ stages:
             vstsFeedPublish: '6c4ecf6c-745f-4968-b374-452b2731c1c5/54305083-d19e-4d78-b746-0631a07c2d16'
             vstsFeedPackagePublish: 'erebus'
             versionOption: 'custom'
-            versionPublish: '1.0.0.$(Patch)'
+            versionPublish: '$(versionPublish)'
             packagePublishDescription: 'Latest'
