@@ -42,3 +42,12 @@ stages:
             SourceFolder: 'target'
             Contents: '*.war'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+        - task: UniversalPackages@0
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(Build.ArtifactStagingDirectory)'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: 'de661523-a2b5-4fb4-ba2c-4286be7c3565/825f2797-5bcb-44d5-b663-7f17f3dd96b7'
+            vstsFeedPackagePublish: 'erebus'
+            versionOption: 'major'
