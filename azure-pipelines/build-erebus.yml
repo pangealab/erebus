@@ -52,7 +52,6 @@ stages:
             command: 'publish'
             publishDirectory: '$(Build.ArtifactStagingDirectory)'
             feedsToUsePublish: 'internal'
-            # vstsFeedPublish: '6c4ecf6c-745f-4968-b374-452b2731c1c5/b436ce19-a4bf-4e34-bd8e-97addb6556c1'
             vstsFeedPublish: 'erebus/artifacts'
             vstsFeedPackagePublish: 'erebus'
             versionOption: 'patch'
