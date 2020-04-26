@@ -43,6 +43,10 @@ stages:
             Contents: '*.war'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+  - stage: Publish
+    jobs:
+      - job: Publish     
+        steps:
         - task: UniversalPackages@0
           inputs:
             command: 'publish'
