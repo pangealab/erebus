@@ -46,7 +46,7 @@ stages:
         # - publish: '$(Build.ArtifactStagingDirectory)'
         #   displayName: 'Publish Files'
         #   artifact: erebus
-        
+
         - task: UniversalPackages@0
           inputs:
             command: 'publish'
@@ -57,4 +57,3 @@ stages:
             versionOption: 'custom'
             versionPublish: '1.0.0.$(Build.BuildNumber)'
             packagePublishDescription: 'Latest'
-
