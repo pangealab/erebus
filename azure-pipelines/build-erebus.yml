@@ -10,9 +10,10 @@ trigger:
 variables:
 
   # Version
-  Version: 1.0.0
-  versionPublish: $[counter(variables['Version'], 0)]
-
+  version: 1.0.0
+  revision: $[counter(variables['version'], 0)]
+  versionPublish: $(version).$(revision)
+  
   # Variables
   key1: 'value1'
   key2: 'value2'
