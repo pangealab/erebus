@@ -56,5 +56,3 @@ stages:
         #     vstsFeedPackagePublish: 'erebus'
         #     versionOption: 'major'
         #     packagePublishDescription: 'Latest'
-
-        
