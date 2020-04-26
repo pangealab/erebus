@@ -47,12 +47,14 @@ stages:
         #   displayName: 'Publish Files'
         #   artifact: erebus
 
-        - task: UniversalPackages@0
-          inputs:
-            command: 'publish'
-            publishDirectory: '$(Build.ArtifactStagingDirectory)'
-            feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'repoman'
-            vstsFeedPackagePublish: 'erebus'
-            versionOption: 'major'
-            packagePublishDescription: 'Latest'
+        # - task: UniversalPackages@0
+        #   inputs:
+        #     command: 'publish'
+        #     publishDirectory: '$(Build.ArtifactStagingDirectory)'
+        #     feedsToUsePublish: 'internal'
+        #     vstsFeedPublish: 'repoman'
+        #     vstsFeedPackagePublish: 'erebus'
+        #     versionOption: 'major'
+        #     packagePublishDescription: 'Latest'
+
+        
