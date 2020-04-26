@@ -52,7 +52,7 @@ stages:
             command: 'publish'
             publishDirectory: '$(Build.ArtifactStagingDirectory)'
             feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'de661523-a2b5-4fb4-ba2c-4286be7c3565/ab937cce-a299-4840-9659-2e6ea74c4e5f'
+            vstsFeedPublish: 'repoman'
             vstsFeedPackagePublish: 'erebus'
             versionOption: 'major'
             packagePublishDescription: 'Latest'
