@@ -45,15 +45,14 @@ stages:
 
   - stage: Publish
     jobs:
-      - job: Publish     
+      - job: Publish
         steps:
         - task: UniversalPackages@0
           inputs:
             command: 'publish'
             publishDirectory: '$(Build.ArtifactStagingDirectory)'
             feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'erebus/artifacts'
+            vstsFeedPublish: 'f38faa50-0d8c-4749-bc39-e470f8f62b69/38b4d7be-d66d-431e-b4d4-c363f020ec8e'
             vstsFeedPackagePublish: 'erebus'
             versionOption: 'patch'
             packagePublishDescription: 'Latest'
-            verbosity: 'Information'
