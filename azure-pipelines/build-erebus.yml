@@ -57,3 +57,13 @@ stages:
             versionOption: 'patch'
             packagePublishDescription: 'Latest'
             verbosity: 'Information'
+
+        - task: UniversalPackages@0
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(Build.ArtifactStagingDirectory)'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: 'zeus/repoman'
+            vstsFeedPackagePublish: 'erebus'
+            versionOption: 'patch'
+            packagePublishDescription: 'Erebus'
