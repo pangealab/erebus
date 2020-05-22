@@ -34,6 +34,7 @@ stages:
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
+            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
             action: 'Create Or Update Resource Group'
             resourceGroupName: 'stage-erebus-rg'
