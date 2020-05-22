@@ -12,14 +12,12 @@ variables:
   ### Variables ###
   accountName: 'stage'
   applicationName: 'erebus'
-  azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
-  resourceGroup: '$(prefix)-rg'
+  resourceGroupName: '$(prefix)-rg'
   servicePlan: '$(prefix)-sp'
   vmImageName: 'ubuntu-latest'
-  region: 'eastus'
-  sku: 'B1'
+  location: 'East US'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -39,8 +37,8 @@ stages:
             azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
             action: 'Create Or Update Resource Group'
-            resourceGroupName: 'erebus-rg'
-            location: 'East US'
+            resourceGroupName: '$(resourceGroupName)'
+            location: '$(location)'
             templateLocation: 'Linked artifact'
             csmFile: '/azure-arm/deploy-erebus.json'
             deploymentMode: 'Incremental'
