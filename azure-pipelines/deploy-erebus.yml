@@ -41,4 +41,4 @@ stages:
             location: '$(location)'
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/deploy-erebus.json'
-            deploymentMode: 'Incremental'
+            deploymentMode: 'Validation'
