@@ -26,18 +26,6 @@ pool:
 
 stages:
 
-  ### Install Tools Stage ###
-  - stage: Install-Tools
-    jobs:
-      - job: Install-Tools
-        steps:
-        - bash: |
-            set -x # Echo Commands
-            # Instal NOWCLI
-            pip3 install setuptools
-            pip3 install nowcli==1.0.4
-          displayName: 'Install NOWCLI'
- 
   ### Initialize Azure Stage ###
   - stage: Init-Env
     jobs:
@@ -45,55 +33,22 @@ stages:
         steps:
 
         ### Create Resource Group  ###
-        - task: AzureCLI@2
-          displayName: 'Create Resource Group'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              set -x # Echo Commands
-              az group create -n $(resourceGroup) -l $(region)
+
 
         ### Create Service Plan  ###
-        - task: AzureCLI@2
-          displayName: 'Create Service Plan'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              set -x # Echo Commands
-              az appservice plan create -n $(servicePlan) -g $(resourceGroup) -l $(region) --sku $SKU --is-linux
 
   ### Create App ###
-  - stage: Create-App
+  - stage: Pre-Create-App
     jobs:
-      - job: Create-App
+      - job: Pre-Create-App
         steps:
 
         ### Pre-Create App ###
-        - task: AzureCLI@2
-          displayName: 'Create App'
-          inputs:
-            azureSubscription: $(azureSubscription)
-            scriptType: 'bash'
-            scriptLocation: 'inlineScript'
-            inlineScript: |
-              set -x # Echo Commands
-              az webapp create -n $(webAppName) -p $(servicePlan) -g $(resourceGroup) --runtime 'TOMCAT|8.5-jre8'
 
-  ### Create App ###
+  ### Deploy War ###
   - stage: Download-Artifact
     jobs:
       - job: Download-Artifact
         steps:
 
-      - task: UniversalPackages@0
-        inputs:
-          command: 'download'
-          downloadDirectory: '$(System.DefaultWorkingDirectory)'
-          feedsToUse: 'internal'
-          vstsFeed: '6c4ecf6c-745f-4968-b374-452b2731c1c5/b436ce19-a4bf-4e34-bd8e-97addb6556c1'
-          vstsFeedPackage: '4af96197-bf4c-4fdb-8943-decdd6d63172'
-          vstsPackageVersion: '0.0.*'
+        ### Download War ###
