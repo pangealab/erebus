@@ -40,5 +40,5 @@ stages:
             resourceGroupName: '$(resourceGroupName)'
             location: '$(location)'
             templateLocation: 'Linked artifact'
-            csmFile: '$(Build.SourcesDirectory)/azure-arm/deploy-erebus.json'
+            csmFile: 'azure-arm/deploy-erebus.json'
             deploymentMode: 'Incremental'
