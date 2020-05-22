@@ -34,11 +34,10 @@ stages:
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
-            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
             action: 'Create Or Update Resource Group'
-            resourceGroupName: '$(resourceGroupName)'
-            location: '$(location)'
-            # templateLocation: 'Linked artifact'
-            # csmFile: '**/deploy-erebus.json'
-            # deploymentMode: 'Validation'
+            resourceGroupName: 'stage-erebus-rg'
+            location: 'East US'
+            templateLocation: 'Linked artifact'
+            csmFile: 'azure-arm/erebus-rg.json'
+            deploymentMode: 'Incremental'
