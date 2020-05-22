@@ -15,7 +15,6 @@ variables:
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
   resourceGroupName: '$(prefix)-rg'
-  servicePlan: '$(prefix)-sp'
   vmImageName: 'ubuntu-latest'
   location: 'East US'
 
@@ -37,9 +36,8 @@ stages:
             azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
             action: 'Create Or Update Resource Group'
-            resourceGroupName: 'stage-erebus-rg'
+            resourceGroupName: '$(resourceGroupName)'
             location: 'East US'
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-sp.json'
             deploymentMode: 'Incremental'
-
