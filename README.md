@@ -32,7 +32,7 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
 1. Login to OKD Console and get Token
 
-1. Login to OKD unsing the CLI
+1. Login to OKD using the CLI
 
 	```
 	oc login https://OKD-URL:OKD-PORT --token=YOUR-TOKEN
