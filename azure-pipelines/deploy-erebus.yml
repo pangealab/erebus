@@ -40,5 +40,5 @@ stages:
             resourceGroupName: '$(resourceGroupName)'
             location: '$(location)'
             templateLocation: 'Linked artifact'
-            csmFile: '**\deploy-erebus.json'
+            csmFile: '**/deploy-erebus.json'
             deploymentMode: 'Validation'
