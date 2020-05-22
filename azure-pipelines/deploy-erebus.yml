@@ -27,12 +27,20 @@ pool:
 stages:
 
   ### Initialize Azure Stage ###
-  - stage: Init-Env
+  - stage: Init_Env
     jobs:
-      - job: Init-Env
+      - job: Init_Env
         steps:
 
         ### Create Resource Group  ###
-        
-
-        ### Create Service Plan  ###
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: 'Resource Group'
+            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
+            action: 'Create Or Update Resource Group'
+            resourceGroupName: 'erebus-rg'
+            location: 'East US'
+            templateLocation: 'Linked artifact'
+            csmFile: '/azure-arm/deploy-erebus.json'
+            deploymentMode: 'Incremental'
