@@ -4,7 +4,7 @@
     "parameters": {
         "name": {
             "type": "string",
-            "defaultValue": "furballs-sp"
+            "defaultValue": "erebus-sp"
         },
         "sku": {
             "type": "string",
@@ -40,7 +40,7 @@
             "kind": "linux",
             "tags": {
                 "app": "erebus",
-                "service": "furballs"
+                "service": "erebus"
             },
             "properties": {
                 "name": "[parameters('name')]",
