@@ -33,22 +33,6 @@ stages:
         steps:
 
         ### Create Resource Group  ###
-
+        
 
         ### Create Service Plan  ###
-
-  ### Create App ###
-  - stage: Pre-Create-App
-    jobs:
-      - job: Pre-Create-App
-        steps:
-
-        ### Pre-Create App ###
-
-  ### Deploy War ###
-  - stage: Download-Artifact
-    jobs:
-      - job: Download-Artifact
-        steps:
-
-        ### Download War ###
