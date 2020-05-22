@@ -30,7 +30,7 @@ stages:
       - job: Init_Env
         steps:
 
-        ### Create Resource Group  ###
+        ### Create Service Plan  ###
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
@@ -40,5 +40,6 @@ stages:
             resourceGroupName: 'stage-erebus-rg'
             location: 'East US'
             templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-rg.json'
+            csmFile: 'azure-arm/erebus-sp.json'
             deploymentMode: 'Incremental'
+
