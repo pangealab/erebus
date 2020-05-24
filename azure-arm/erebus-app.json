@@ -7,7 +7,7 @@
             "type": "String"
         },
         "serverfarms_stage_erebus_sp_externalid": {
-            "defaultValue": "/subscriptions/39fa8f87-83f2-4d92-a424-408ebdfbeb19/resourceGroups/stage-erebus-rg/providers/Microsoft.Web/serverfarms/stage-erebus-sp",
+            "defaultValue": "erebus-sp",
             "type": "String"
         }
     },
