@@ -13,11 +13,11 @@
     },
     "resources": [
         {
-            "apiVersion": "2018-11-01",
+            "apiVersion": "2018-02-01",
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[resourceGroup().location]",           
-            "kind": "app,linux",
+            "kind": "linux",
             "tags": {
                 "app": "erebus",
                 "service": "erebus"
