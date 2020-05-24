@@ -40,9 +40,9 @@ stages:
   #           downloadPath: '$(System.ArtifactsDirectory)'
 
   ### Initialize Azure Stage ###
-  - stage: Create_Resource_Group
+  - stage: Init_Env
     jobs:
-      - job: Create_Resource_Group
+      - job: Init_Env
         steps:
         ### Create Service Plan  ###
         - task: AzureResourceManagerTemplateDeployment@3
