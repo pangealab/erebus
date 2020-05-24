@@ -1,13 +1,13 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "sites_stage_erebus_app_name": {
             "defaultValue": "stage-erebus-app",
             "type": "String"
         },
-        "serverfarms_stage_erebus_sp_externalid": {
-            "defaultValue": "/subscriptions/fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7/resourceGroups/stage-erebus-rg/providers/Microsoft.Web/serverfarms/stage-erebus-sp",
+        "serverfarms_erebus_sp_externalid": {
+            "defaultValue": "/subscriptions/fe82a5ab-cf22-4f8e-be43-2d2aaaebdda7/resourceGroups/erebus-rg/providers/Microsoft.Web/serverfarms/erebus-sp",
             "type": "String"
         }
     },
@@ -17,9 +17,9 @@
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
             "name": "[parameters('sites_stage_erebus_app_name')]",
-            "location": "East US",
+            "location": "[resourceGroup().location]",
             "tags": {
-                "app": "erebus"
+                "service": "furballs"
             },
             "kind": "app,linux",
             "properties": {
@@ -36,10 +36,11 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('serverfarms_stage_erebus_sp_externalid')]",
+                "serverFarmId": "[parameters('serverfarms_erebus_sp_externalid')]",
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
+                "siteConfig": {},
                 "scmSiteAlsoStopped": false,
                 "clientAffinityEnabled": true,
                 "clientCertEnabled": false,
@@ -54,12 +55,12 @@
             "type": "Microsoft.Web/sites/config",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sites_stage_erebus_app_name'), '/web')]",
-            "location": "East US",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
             "tags": {
-                "app": "erebus"
+                "service": "furballs"
             },
             "properties": {
                 "numberOfWorkers": 1,
@@ -128,27 +129,18 @@
         {
             "type": "Microsoft.Web/sites/deployments",
             "apiVersion": "2018-11-01",
-            "name": "[concat(parameters('sites_stage_erebus_app_name'), '/3513ae2ad11f40a8899318124930898d')]",
-            "location": "East US",
+            "name": "[concat(parameters('sites_stage_erebus_app_name'), '/f435569cdf0b4ff7afe4bef166f6c53f')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
-            "properties": {
-                "status": 4,
-                "author_email": "N/A",
-                "author": "N/A",
-                "deployer": "Push-Deployer",
-                "message": "Created via a push deployment",
-                "start_time": "2020-04-17T20:20:14.1869748Z",
-                "end_time": "2020-04-17T20:20:30.6614446Z",
-                "active": true
-            }
+            "properties": {}
         },
         {
             "type": "Microsoft.Web/sites/hostNameBindings",
             "apiVersion": "2018-11-01",
             "name": "[concat(parameters('sites_stage_erebus_app_name'), '/', parameters('sites_stage_erebus_app_name'), '.azurewebsites.net')]",
-            "location": "East US",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('sites_stage_erebus_app_name'))]"
             ],
