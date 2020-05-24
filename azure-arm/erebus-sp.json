@@ -8,27 +8,7 @@
         },
         "sku": {
             "type": "string",
-            "defaultValue": "Basic"
-        },
-        "skucode": {
-            "type": "string",
             "defaultValue": "B1"
-        },
-        "workerSize": {
-            "type": "string",
-            "defaultValue": "0"
-        },
-        "workerSizeId": {
-            "type": "string",
-            "defaultValue": "0"
-        },
-        "numberOfWorkers": {
-            "type": "string",
-            "defaultValue": "0"
-        },
-        "hostingEnvironment": {
-            "type": "string",
-            "defaultValue": ""
         }
     },
     "resources": [
@@ -37,22 +17,14 @@
             "name": "[parameters('name')]",
             "type": "Microsoft.Web/serverfarms",
             "location": "[resourceGroup().location]",           
-            "kind": "linux",
+            "kind": "app",
             "tags": {
                 "app": "erebus",
                 "service": "erebus"
             },
-            "properties": {
-                "name": "[parameters('name')]",
-                "workerSize": "[parameters('workerSize')]",
-                "workerSizeId": "[parameters('workerSizeId')]",
-                "numberOfWorkers": "[parameters('numberOfWorkers')]",
-                "reserved": true,
-                "hostingEnvironment": "[parameters('hostingEnvironment')]"
-            },
+            "properties": {},
             "sku": {
-                "Tier": "[parameters('sku')]",
-                "Name": "[parameters('skuCode')]"
+                "name": "[parameters('sku')]"
             }
         }
     ]
