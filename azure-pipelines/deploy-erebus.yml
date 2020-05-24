@@ -59,12 +59,12 @@ stages:
   #           deploymentMode: 'Incremental'
 
   ### Deploy Azure App ###
-  # - stage: Deploy_App
-  #   jobs:
-  #     - job: Deploy_App
-  #       steps:
+  - stage: Deploy_App
+    jobs:
+      - job: Deploy_App
+        steps:
 
-  #       ### Deploy Azure App  ###
+        ### Deploy Azure App  ###
           - task: AzureResourceManagerTemplateDeployment@3
             inputs:
               deploymentScope: 'Resource Group'
