@@ -73,5 +73,5 @@ stages:
             location: 'East US'
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-app.json'
-            overrideParameters: '–webAppName $(webAppName) -appServicePlanName $(appServicePlanName)'
+            overrideParameters: '–webAppName "$(webAppName)" -appServicePlanName "$(appServicePlanName)""'
             deploymentMode: 'Incremental'
