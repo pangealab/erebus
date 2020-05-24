@@ -12,6 +12,7 @@ variables:
   ### Variables ###
   accountName: 'stage'
   applicationName: 'erebus'
+  appServicePlanName: '$(applicationName)-sp'
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
   resourceGroupName: '$(prefix)-rg'
@@ -23,12 +24,11 @@ pool:
 
 stages:
 
-  # ### Download Artifact ###
+  ### Download Artifact ###
   # - stage: Download_Artifact
   #   jobs:
   #     - job: Download_Artifact
   #       steps:
-
   #       ### Download Artifact  ###
   #       - task: DownloadPackage@1
   #         inputs:
@@ -40,11 +40,10 @@ stages:
   #           downloadPath: '$(System.ArtifactsDirectory)'
 
   ### Initialize Azure Stage ###
-  - stage: Init_Env
+  - stage: Create_Resource_Group
     jobs:
-      - job: Init_Env
+      - job: Create_Resource_Group
         steps:
-
         ### Create Service Plan  ###
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
