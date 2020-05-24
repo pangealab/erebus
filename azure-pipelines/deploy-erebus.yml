@@ -23,21 +23,37 @@ pool:
 
 stages:
 
-  ### Initialize Azure Stage ###
-  - stage: Init_Env
+  ### Download Artifact ###
+  - stage: Download_Artifact
     jobs:
-      - job: Init_Env
+      - job: Download_Artifact
         steps:
 
-        ### Create Service Plan  ###
-        - task: AzureResourceManagerTemplateDeployment@3
+        ### Download Artifact  ###
+        - task: DownloadPackage@1
           inputs:
-            deploymentScope: 'Resource Group'
-            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
-            action: 'Create Or Update Resource Group'
-            resourceGroupName: '$(resourceGroupName)'
-            location: 'East US'
-            templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-sp.json'
-            deploymentMode: 'Incremental'
+            packageType: 'upack'
+            feed: 'b41ddbcb-289a-4302-8437-38127314a0e0/82bc6ac9-1930-4856-9cdb-5510cd99512d'
+            view: '5532f264-1511-4a39-9111-7cc81aa3f121'
+            definition: '7fbc9209-cafc-468d-89f4-51a34ef787e5'
+            version: 'latest'
+            downloadPath: '$(System.ArtifactsDirectory)'
+
+  ### Initialize Azure Stage ###
+  # - stage: Init_Env
+  #   jobs:
+  #     - job: Init_Env
+  #       steps:
+
+  #       ### Create Service Plan  ###
+  #       - task: AzureResourceManagerTemplateDeployment@3
+  #         inputs:
+  #           deploymentScope: 'Resource Group'
+  #           azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  #           subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
+  #           action: 'Create Or Update Resource Group'
+  #           resourceGroupName: '$(resourceGroupName)'
+  #           location: 'East US'
+  #           templateLocation: 'Linked artifact'
+  #           csmFile: 'azure-arm/erebus-sp.json'
+  #           deploymentMode: 'Incremental'
