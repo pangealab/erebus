@@ -21,7 +21,9 @@
       "properties": {
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
         "siteConfig": {
-          "linuxFxVersion": "TOMCAT|8.5-jre8"
+            "properties": {
+                "linuxFxVersion": "TOMCAT|8.5-jre8"
+            }
         }
       }
     }
