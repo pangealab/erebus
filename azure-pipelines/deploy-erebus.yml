@@ -40,22 +40,22 @@ stages:
   #           downloadPath: '$(System.ArtifactsDirectory)'
 
   ### Initialize Azure Stage ###
-  - stage: Init_Env
-    jobs:
-      - job: Init_Env
-        steps:
-        ### Create Service Plan  ###
-        - task: AzureResourceManagerTemplateDeployment@3
-          inputs:
-            deploymentScope: 'Resource Group'
-            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
-            action: 'Create Or Update Resource Group'
-            resourceGroupName: '$(resourceGroupName)'
-            location: 'East US'
-            templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-sp.json'
-            deploymentMode: 'Incremental'
+  # - stage: Init_Env
+  #   jobs:
+  #     - job: Init_Env
+  #       steps:
+  #       ### Create Service Plan  ###
+  #       - task: AzureResourceManagerTemplateDeployment@3
+  #         inputs:
+  #           deploymentScope: 'Resource Group'
+  #           azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  #           subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
+  #           action: 'Create Or Update Resource Group'
+  #           resourceGroupName: '$(resourceGroupName)'
+  #           location: 'East US'
+  #           templateLocation: 'Linked artifact'
+  #           csmFile: 'azure-arm/erebus-sp.json'
+  #           deploymentMode: 'Incremental'
 
   ### Create App Service ###
   - stage: Create_App_Service
