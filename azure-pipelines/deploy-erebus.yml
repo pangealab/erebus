@@ -18,7 +18,7 @@ variables:
   webAppName: '$(prefix)-app'
   location: 'East US'
   skuName: 'B1'
-  skuCapacity: 5
+  skuCapacity: 3
 
 pool:
   vmImage: 'ubuntu-latest'
