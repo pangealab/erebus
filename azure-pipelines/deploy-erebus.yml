@@ -52,7 +52,7 @@ stages:
             subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
             action: 'Create Or Update Resource Group'
             resourceGroupName: '$(resourceGroupName)'
-            location: 'East US'
+            location: '$(location)'
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-sp.json'
             csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
