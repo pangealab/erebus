@@ -29,8 +29,9 @@
                 "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "properties": {
-                "netFrameworkVersion": "v4.0",
-                "linuxFxVersion": "TOMCAT|8.5-jre8"
+                "javaVersion": "1.8",
+                "javaContainer": "TOMCAT",
+                "javaContainerVersion": "8.0"
             }
         }
     ]
