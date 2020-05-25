@@ -36,23 +36,23 @@ stages:
             goals: 'package'
             options: '-DskipTests=true'
 
-        # - task: CopyFiles@2
-        #   displayName: 'Stage Files'
-        #   inputs:
-        #     SourceFolder: 'target'
-        #     Contents: '**.war'
-        #     TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-  - stage: Publish
-    jobs:
-      - job: Publish
-        steps:
-        - task: UniversalPackages@0
+        - task: CopyFiles@2
+          displayName: 'Stage Files'
           inputs:
-            command: 'publish'
-            publishDirectory: '$(Build.ArtifactStagingDirectory)'
-            feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'erebus/artifactory'
-            vstsFeedPackagePublish: 'erebus'
-            versionOption: 'patch'
-            packagePublishDescription: 'Latest'
+            SourceFolder: 'target'
+            Contents: '*.war'
+            TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  # - stage: Publish
+  #   jobs:
+  #     - job: Publish
+  #       steps:
+  #       - task: UniversalPackages@0
+  #         inputs:
+  #           command: 'publish'
+  #           publishDirectory: '$(Build.ArtifactStagingDirectory)'
+  #           feedsToUsePublish: 'internal'
+  #           vstsFeedPublish: 'erebus/artifactory'
+  #           vstsFeedPackagePublish: 'erebus'
+  #           versionOption: 'patch'
+  #           packagePublishDescription: 'Latest'
