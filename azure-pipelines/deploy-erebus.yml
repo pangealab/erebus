@@ -24,12 +24,14 @@ pool:
 
 stages:
 
-  ### Initialize Azure Stage ###
+  ################################################################################
+  #                         Initialize Azure Stage                               #
+  ################################################################################
   - stage: Init_Env
     jobs:
       - job: Create_Service_Plan
         steps:
-        ### Create Service Plan  ###
+        # Use ARM Template to create Azure Service Plan
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
@@ -44,12 +46,14 @@ stages:
             overrideParameters: '-appServicePlanName $(appServicePlanName) -sku $(sku)'
             deploymentMode: 'Incremental'
 
-  ### Create App Service ###
+  ################################################################################
+  #                         Create App Service Stage                             #
+  ################################################################################  
   - stage: Create_App_Service
     jobs:
       - job: Create_App_Service
         steps:
-        ### Create App Service  ###
+        # Use ARM Template to create Azure Application Service
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
@@ -64,12 +68,14 @@ stages:
             overrideParameters: '-webAppName $(webAppName) -appServicePlanName $(appServicePlanName)'
             deploymentMode: 'Incremental'
 
-  ### Deploy Artifact ###
+  ################################################################################
+  #                            Deploy Artifact Stage                             #
+  ################################################################################  
   - stage: Deploy_Artifact
     jobs:
       - job: Download_Package
         steps:
-        ### Download Package  ###
+        # Download latest WAR file package from Artifact Feed
         - task: DownloadPackage@1
           inputs:
             packageType: 'upack'
@@ -79,7 +85,7 @@ stages:
             version: '0.0.*'
             downloadPath: '$(System.ArtifactsDirectory)'
 
-        ### Deploy Package  ###
+        # Deploy WAR file to Azure Application Service
         - task: AzureRmWebAppDeployment@4
           inputs:
             ConnectionType: 'AzureRM'
