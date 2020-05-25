@@ -30,7 +30,7 @@
                         "hostType": "Repository"
                     }
                 ],
-                "serverFarmId": "[parameters('appServicePlanName')]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
