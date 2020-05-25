@@ -9,14 +9,10 @@ trigger:
 
 variables:
 
-  ### Variables ###
   accountName: 'stage'
   applicationName: 'erebus'
-  appServicePlanName: '$(applicationName)-sp'
   prefix: '$(accountName)-$(applicationName)'
-  webAppName: '$(prefix)-app'
   resourceGroupName: '$(prefix)-rg'
-  vmImageName: 'ubuntu-latest'
   location: 'East US'
 
 pool:
@@ -40,29 +36,11 @@ stages:
   #           downloadPath: '$(System.ArtifactsDirectory)'
 
   ### Initialize Azure Stage ###
-  # - stage: Init_Env
-  #   jobs:
-  #     - job: Init_Env
-  #       steps:
-  #       ### Create Service Plan  ###
-  #       - task: AzureResourceManagerTemplateDeployment@3
-  #         inputs:
-  #           deploymentScope: 'Resource Group'
-  #           azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-  #           subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
-  #           action: 'Create Or Update Resource Group'
-  #           resourceGroupName: '$(resourceGroupName)'
-  #           location: 'East US'
-  #           templateLocation: 'Linked artifact'
-  #           csmFile: 'azure-arm/erebus-sp.json'
-  #           deploymentMode: 'Incremental'
-
-  ### Create App Service ###
-  - stage: Create_App_Service
+  - stage: Init_Env
     jobs:
-      - job: Create_App_Service
+      - job: Init_Env
         steps:
-        ### Create App Service  ###
+        ### Create Service Plan  ###
         - task: AzureResourceManagerTemplateDeployment@3
           inputs:
             deploymentScope: 'Resource Group'
@@ -72,6 +50,25 @@ stages:
             resourceGroupName: '$(resourceGroupName)'
             location: 'East US'
             templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-app.json'
-            overrideParameters: '–webAppName "$(webAppName)"'
+            csmFile: 'azure-arm/erebus-sp.json'
+            csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
+            overrideParameters: '-name erebus-sp -sku B1'
             deploymentMode: 'Incremental'
+
+  ### Create App Service ###
+  # - stage: Create_App_Service
+  #   jobs:
+  #     - job: Create_App_Service
+  #       steps:
+  #       ### Create App Service  ###
+  #       - task: AzureResourceManagerTemplateDeployment@3
+  #         inputs:
+  #           deploymentScope: 'Resource Group'
+  #           azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+  #           subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
+  #           action: 'Create Or Update Resource Group'
+  #           resourceGroupName: '$(resourceGroupName)'
+  #           location: '$(location)'
+  #           templateLocation: 'Linked artifact'
+  #           csmFile: 'azure-arm/erebus-app.json'
+  #           deploymentMode: 'Incremental'
