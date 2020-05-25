@@ -13,7 +13,7 @@ variables:
   accountName: 'stage'
   applicationName: 'erebus'
   resourceGroupName: '$(applicationName)-rg'
-  appServicePlanName: '$(applicationName)-sg'
+  appServicePlanName: '$(applicationName)-sp'
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
   location: 'East US'
