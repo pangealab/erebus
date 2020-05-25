@@ -3,12 +3,10 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "webAppName": {
-      "type": "string",
-      "defaultValue": "stage-erebus-app"
+      "type": "string"
     },
     "appServicePlanName": {
-      "type": "string",
-      "defaultValue": "erebus-sp"
+      "type": "string"
     }    
   },
   "resources": [
