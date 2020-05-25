@@ -20,12 +20,12 @@
                 "enabled": true,
                 "hostNameSslStates": [
                     {
-                        "name": "[concat(parameters('appServicePlanName'), '.azurewebsites.net')]",
+                        "name": "[concat(parameters('webAppName'), '.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Standard"
                     },
                     {
-                        "name": "[concat(parameters('appServicePlanName'), '.scm.azurewebsites.net')]",
+                        "name": "[concat(parameters('webAppName'), '.scm.azurewebsites.net')]",
                         "sslState": "Disabled",
                         "hostType": "Repository"
                     }
