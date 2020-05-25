@@ -19,11 +19,15 @@ pool:
 
 stages:
 
-  ### Build WAR File  ###
+  ################################################################################
+  #                             Build WAR File Stage                             #
+  ################################################################################  
   - stage: Build_Artifact
     jobs:
       - job: Build_Artifact
         steps:
+
+        # Run Maven package to build WAR file
         - task: Maven@3
           displayName: 'Maven Package'
           inputs:
@@ -37,7 +41,7 @@ stages:
             goals: 'package'
             options: '-DskipTests=true'
 
-        ### Copy WAR File to Staging Folder  ###
+        # Copy WAR File to Staging Folder
         - task: CopyFiles@2
           displayName: 'Stage Files'
           inputs:
@@ -45,7 +49,7 @@ stages:
             Contents: '*.war'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-        ### Publish WAR File as Pipeline Build  ###
+        # Publish WAR File as Pipeline Build
         - task: PublishBuildArtifacts@1
           displayName: 'Publish Build'
           inputs:
@@ -53,12 +57,15 @@ stages:
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
-  ### Publish WAR File to Artifacts Repo ###
+  ################################################################################
+  #                     Publish WAR File to Artifacts Stage                      #
+  ################################################################################    
   - stage: Publish_Artifact
     jobs:
       - job: Publish_Artifact
         steps:
-        ### Download WAR File from Pipeline Build ###
+
+        # Download WAR File from Pipeline Build
         - task: DownloadBuildArtifacts@0
           displayName: 'Download Build'
           inputs:
@@ -66,7 +73,8 @@ stages:
             downloadType: 'single'
             artifactName: 'drop'
             downloadPath: '$(System.ArtifactsDirectory)'
-        ### Publish WAR File to Artifacts Repo ###
+            
+        # Publish WAR File to Artifacts Repo
         - task: UniversalPackages@0
           displayName: 'Publish Artifact'
           inputs:
