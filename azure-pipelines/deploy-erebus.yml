@@ -52,7 +52,7 @@ stages:
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-sp.json'
             csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
-            # overrideParameters: '-name erebus-sp -sku B1'
+            overrideParameters: '-name erebus-sp -sku B1'
             deploymentMode: 'Incremental'
 
   ### Create App Service ###
