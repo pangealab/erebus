@@ -19,9 +19,9 @@ pool:
 
 stages:
 
-  - stage: Build
+  - stage: Build_Artifact
     jobs:
-      - job: Build
+      - job: Build_Artifact
         steps:
         - task: Maven@3
           displayName: 'Maven Package'
