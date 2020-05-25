@@ -40,7 +40,7 @@ stages:
           displayName: 'Stage Files'
           inputs:
             SourceFolder: 'target'
-            Contents: '*.war'
+            Contents: '**.war'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
   - stage: Publish
