@@ -5,30 +5,20 @@
         "name": {
             "type": "string",
             "defaultValue": "furballs-insights"
-        },
-        "type": {
-            "type": "string",
-            "defaultValue": "web"
-        },
-        "requestSource": {
-            "type": "string",
-            "defaultValue": "IbizaAIExtension"
         }
     },
     "resources": [
         {
-            "name": "[parameters('name')]",
             "type": "microsoft.insights/components",
+            "apiVersion": "2015-05-01",
+            "name": "[parameters('name')]",
             "location": "[resourceGroup().location]",
             "tags": {
                 "service": "furballs"
             },
-            "apiVersion": "2014-08-01",
+            "kind": "web",
             "properties": {
-                "ApplicationId": "[parameters('name')]",
-                "Application_Type": "[parameters('type')]",
-                "Flow_Type": "Redfield",
-                "Request_Source": "[parameters('requestSource')]"
+                "Application_Type": "web"
             }
         }
     ]
