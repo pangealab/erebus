@@ -53,20 +53,18 @@ stages:
     jobs:
       - job: Publish
         steps:
-
         - task: DownloadBuildArtifacts@0
           inputs:
             buildType: 'current'
             downloadType: 'single'
             artifactName: 'drop'
             downloadPath: '$(System.ArtifactsDirectory)'
-
-        # - task: UniversalPackages@0
-        #   inputs:
-        #     command: 'publish'
-        #     publishDirectory: '$(System.ArtifactsDirectory)'
-        #     feedsToUsePublish: 'internal'
-        #     vstsFeedPublish: 'erebus/artifactory'
-        #     vstsFeedPackagePublish: 'erebus'
-        #     versionOption: 'patch'
-        #     packagePublishDescription: 'Latest'
+        - task: UniversalPackages@0
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(System.ArtifactsDirectory)'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: 'erebus/artifactory'
+            vstsFeedPackagePublish: 'erebus'
+            versionOption: 'patch'
+            packagePublishDescription: 'Latest'
