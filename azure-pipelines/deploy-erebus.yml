@@ -9,11 +9,15 @@ trigger:
 
 variables:
 
+  ### Variables ###
   accountName: 'stage'
   applicationName: 'erebus'
+  resourceGroupName: '$(applicationName)-rg'
+  appServicePlanName: '$(applicationName)-sg'
   prefix: '$(accountName)-$(applicationName)'
-  resourceGroupName: '$(prefix)-rg'
+  webAppName: '$(prefix)-app'
   location: 'East US'
+  sku: 'B1'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -52,7 +56,7 @@ stages:
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-sp.json'
             csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
-            overrideParameters: '-name erebus-sp -sku B1'
+            overrideParameters: '-appServicePlanName $(appServicePlanName) -sku $(sku)'
             deploymentMode: 'Incremental'
 
   ### Create App Service ###
