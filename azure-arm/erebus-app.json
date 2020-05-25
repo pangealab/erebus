@@ -15,7 +15,7 @@
             "apiVersion": "2018-11-01",
             "name": "[parameters('webAppName')]",
             "location": "[resourceGroup().location]",
-            "kind": "linux",
+            "kind": "app,linux",
             "properties": {
                 "enabled": true,
                 "hostNameSslStates": [

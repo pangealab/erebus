@@ -20,7 +20,16 @@
                 "app": "erebus",
                 "service": "erebus"
             },
-            "properties": {},
+            "properties": {
+                "perSiteScaling": false,
+                "maximumElasticWorkerCount": 1,
+                "isSpot": false,
+                "reserved": true,
+                "isXenon": false,
+                "hyperV": false,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
+            },
             "sku": {
                 "name": "[parameters('sku')]"
             }
