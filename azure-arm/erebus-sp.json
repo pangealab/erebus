@@ -5,9 +5,12 @@
         "appServicePlanName": {
             "type": "string"
         },
-        "sku": {
+        "skuName": {
             "type": "string"
-        }
+        }, 
+        "skuCapacity": {
+            "type": "int"
+        }        
     },
     "resources": [
         {
@@ -31,8 +34,16 @@
                 "targetWorkerSizeId": 0
             },
             "sku": {
-                "name": "[parameters('sku')]"
+                "name": "[parameters('skuName')]",
+                "capacity": "[parameters('skuCapacity')]"
             }
         }
     ]
 }
+
+
+                "name": "B1",
+                "tier": "Basic",
+                "size": "B1",
+                "family": "B",
+                "capacity": 1
