@@ -5,8 +5,11 @@
         "appServicePlanName": {
             "value": null
         },
-        "sku": {
+        "skuName": {
             "value": null
-        }
+        },
+        "skuCapacity": {
+            "value": null
+        }        
     }
 }
