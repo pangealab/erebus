@@ -49,16 +49,16 @@ stages:
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
-  # - stage: Publish
-  #   jobs:
-  #     - job: Publish
-  #       steps:
-  #       - task: UniversalPackages@0
-  #         inputs:
-  #           command: 'publish'
-  #           publishDirectory: '$(Build.ArtifactStagingDirectory)'
-  #           feedsToUsePublish: 'internal'
-  #           vstsFeedPublish: 'erebus/artifactory'
-  #           vstsFeedPackagePublish: 'erebus'
-  #           versionOption: 'patch'
-  #           packagePublishDescription: 'Latest'
+  - stage: Publish
+    jobs:
+      - job: Publish
+        steps:
+        - task: UniversalPackages@0
+          inputs:
+            command: 'publish'
+            publishDirectory: '$(Build.ArtifactStagingDirectory)'
+            feedsToUsePublish: 'internal'
+            vstsFeedPublish: 'erebus/artifactory'
+            vstsFeedPackagePublish: 'erebus'
+            versionOption: 'patch'
+            packagePublishDescription: 'Latest'
