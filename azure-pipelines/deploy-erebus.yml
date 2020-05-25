@@ -17,7 +17,8 @@ variables:
   prefix: '$(accountName)-$(applicationName)'
   webAppName: '$(prefix)-app'
   location: 'East US'
-  sku: 'B1'
+  skuName: 'B1'
+  skuCapacity: 1
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -43,7 +44,7 @@ stages:
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-sp.json'
             csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
-            overrideParameters: '-appServicePlanName $(appServicePlanName) -sku $(sku)'
+            overrideParameters: '-appServicePlanName $(appServicePlanName) -skuName $(skuName) -skuCapacity $(skuCapacity)'
             deploymentMode: 'Incremental'
 
   ################################################################################
