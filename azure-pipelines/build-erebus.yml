@@ -9,7 +9,7 @@ trigger:
 
 variables:
 
-  # Variables
+  ### Variables ###
   key1: 'value1'
   key2: 'value2'
   key3: 'value3'
@@ -19,6 +19,7 @@ pool:
 
 stages:
 
+  ### Build WAR File  ###
   - stage: Build_Artifact
     jobs:
       - job: Build_Artifact
@@ -36,6 +37,7 @@ stages:
             goals: 'package'
             options: '-DskipTests=true'
 
+        ### Copy WAR File to Staging Folder  ###
         - task: CopyFiles@2
           displayName: 'Stage Files'
           inputs:
@@ -43,6 +45,7 @@ stages:
             Contents: '*.war'
             TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
+        ### Publish WAR File as Pipeline Build  ###
         - task: PublishBuildArtifacts@1
           displayName: 'Publish Build'
           inputs:
@@ -50,10 +53,12 @@ stages:
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
+  ### Publish WAR File to Artifacts Repo ###
   - stage: Publish_Artifact
     jobs:
       - job: Publish_Artifact
         steps:
+        ### Download WAR File from Pipeline Build ###
         - task: DownloadBuildArtifacts@0
           displayName: 'Download Build'
           inputs:
@@ -61,6 +66,7 @@ stages:
             downloadType: 'single'
             artifactName: 'drop'
             downloadPath: '$(System.ArtifactsDirectory)'
+        ### Publish WAR File to Artifacts Repo ###
         - task: UniversalPackages@0
           displayName: 'Publish Artifact'
           inputs:
