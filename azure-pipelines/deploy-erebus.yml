@@ -87,3 +87,4 @@ stages:
             appType: 'webAppLinux'
             WebAppName: '$(webAppName)'
             packageForLinux: '$(System.ArtifactsDirectory)/drop/*.war'
+            RuntimeStack: 'TOMCAT|8.5-jre8'
