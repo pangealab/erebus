@@ -50,9 +50,9 @@ stages:
             ArtifactName: 'drop'
             publishLocation: 'Container'
 
-  - stage: Publish
+  - stage: Publish_Artifact
     jobs:
-      - job: Publish
+      - job: Publish_Artifact
         steps:
         - task: DownloadBuildArtifacts@0
           displayName: 'Download Build'
