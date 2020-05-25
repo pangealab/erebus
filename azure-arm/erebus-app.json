@@ -17,12 +17,7 @@
       "location": "[resourceGroup().location]",
       "kind": "app,linux",
       "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]",
-        "siteConfig": {
-            "properties": {
-                "linuxFxVersion": "TOMCAT|8.5-jre8"
-            }
-        }
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('appServicePlanName'))]"
       }
     }
   ]
