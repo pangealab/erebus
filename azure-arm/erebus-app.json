@@ -151,7 +151,7 @@
                         "retentionInDays": 3,
                         "retentionInMb": 100
                     }
-                }
+                }               
             }
         }
     ]
