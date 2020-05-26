@@ -7,7 +7,7 @@
   <artifactId>ItemWS</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <name>ItemWS</name>
-  <description>Demo project for Spring Boot</description>
+  <description>Pet Viewer Back-End</description>
   <packaging>war</packaging>
   <parent>
     <groupId>org.springframework.boot</groupId>
