@@ -4,7 +4,7 @@
     "parameters": {
         "name": {
             "type": "string",
-            "defaultValue": "furballs-insights"
+            "defaultValue": "furball-insights"
         }
     },
     "resources": [
@@ -14,7 +14,7 @@
             "name": "[parameters('name')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "service": "furballs"
+                "service": "furball"
             },
             "kind": "web",
             "properties": {
