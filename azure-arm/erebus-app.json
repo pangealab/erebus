@@ -119,40 +119,40 @@
                 "http20Enabled": false,
                 "minTlsVersion": "1.2",
                 "ftpsState": "AllAllowed",
-                "reservedInstanceCount": 0,
-                "applicationLogs": {
-                    "azureBlobStorage": {
-                        "level": "Off",
-                        "retentionInDays": null,
-                        "sasUrl": null
-                    },
-                    "azureTableStorage": {
-                        "level": "Off",
-                        "sasUrl": null
-                    },
-                    "fileSystem": {
-                        "level": "Error"
-                    }
-                },
-                "detailedErrorMessages": {
-                    "enabled": false
-                },
-                "failedRequestsTracing": {
-                    "enabled": false
-                },
-                "httpLogs": {
-                    "azureBlobStorage": {
-                        "enabled": false,
-                        "retentionInDays": 3,
-                        "sasUrl": null
-                    },
-                    "fileSystem": {
-                        "enabled": true,
-                        "retentionInDays": 3,
-                        "retentionInMb": 100
-                    }
-                }               
-            }
+                "reservedInstanceCount": 0
+            //     "applicationLogs": {
+            //         "azureBlobStorage": {
+            //             "level": "Off",
+            //             "retentionInDays": null,
+            //             "sasUrl": null
+            //         },
+            //         "azureTableStorage": {
+            //             "level": "Off",
+            //             "sasUrl": null
+            //         },
+            //         "fileSystem": {
+            //             "level": "Error"
+            //         }
+            //     },
+            //     "detailedErrorMessages": {
+            //         "enabled": false
+            //     },
+            //     "failedRequestsTracing": {
+            //         "enabled": false
+            //     },
+            //     "httpLogs": {
+            //         "azureBlobStorage": {
+            //             "enabled": false,
+            //             "retentionInDays": 3,
+            //             "sasUrl": null
+            //         },
+            //         "fileSystem": {
+            //             "enabled": true,
+            //             "retentionInDays": 3,
+            //             "retentionInMb": 100
+            //         }
+            //     }               
+            // }
         }
     ]
 }
