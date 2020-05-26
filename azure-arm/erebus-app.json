@@ -15,6 +15,9 @@
             "apiVersion": "2018-11-01",
             "name": "[parameters('webAppName')]",
             "location": "[resourceGroup().location]",
+            "tags": {
+                "service": "furball"
+            },
             "kind": "app,linux",
             "properties": {
                 "enabled": true,
@@ -54,7 +57,7 @@
                 "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
             "tags": {
-                "service": "furballs"
+                "service": "furball"
             },
             "properties": {
                 "numberOfWorkers": 1,

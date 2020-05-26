@@ -20,8 +20,7 @@
             "location": "[resourceGroup().location]",           
             "kind": "linux",
             "tags": {
-                "app": "erebus",
-                "service": "erebus"
+                "service": "furball"
             },
             "properties": {
                 "perSiteScaling": false,
