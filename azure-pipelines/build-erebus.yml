@@ -10,7 +10,7 @@
 trigger:
   branches:
     include:
-      - none
+      - build
 
 variables:
 
