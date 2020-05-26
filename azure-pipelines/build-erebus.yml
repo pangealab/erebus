@@ -86,7 +86,7 @@ stages:
             command: 'publish'
             publishDirectory: '$(System.ArtifactsDirectory)'
             feedsToUsePublish: 'internal'
-            vstsFeedPublish: 'erebus/artifactory'
+            vstsFeedPublish: 'erebus/erebus'
             vstsFeedPackagePublish: 'erebus'
             versionOption: 'patch'
             packagePublishDescription: 'Latest'
