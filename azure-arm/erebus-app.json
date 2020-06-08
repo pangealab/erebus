@@ -60,7 +60,7 @@
                     "appSettings": [
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[(concat('Microsoft.Insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+                            "value": "[reference(concat('microsoft.insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
                         }
                     ]
                 },
