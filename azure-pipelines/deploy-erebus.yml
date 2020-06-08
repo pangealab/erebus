@@ -98,4 +98,4 @@ stages:
             azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             appType: 'webAppLinux'
             WebAppName: '$(webAppName)'
-            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.war'        
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.war'
