@@ -7,7 +7,10 @@
         },
         "appServicePlanName": {
             "type": "string"
-        }
+        },
+        "appInsightsName": {
+            "type": "string"
+        }        
     },
     "resources": [
         {
@@ -37,7 +40,14 @@
                 "reserved": true,
                 "isXenon": false,
                 "hyperV": false,
-                "siteConfig": {},
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference(concat('microsoft.insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+                        }
+                    ]
+                },
                 "scmSiteAlsoStopped": false,
                 "clientAffinityEnabled": true,
                 "clientCertEnabled": false,

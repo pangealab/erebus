@@ -10,7 +10,7 @@
         {
             "type": "microsoft.insights/components",
             "apiVersion": "2015-05-01",
-            "name": "[parameters('insightsName')]",
+            "name": "[parameters('appInsightsName')]",
             "location": "[resourceGroup().location]",
             "tags": {
                 "service": "furball"

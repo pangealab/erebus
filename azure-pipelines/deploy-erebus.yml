@@ -53,6 +53,28 @@ stages:
             deploymentMode: 'Incremental'
 
   ################################################################################
+  #                            Deploy Insights Stage                             #
+  ################################################################################  
+  - stage: Deploy_Insights
+    jobs:
+      - job: Deploy_Insights
+        steps:
+        # Use ARM Template to deploy Insights
+        - task: AzureResourceManagerTemplateDeployment@3
+          inputs:
+            deploymentScope: 'Resource Group'
+            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
+            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
+            action: 'Create Or Update Resource Group'
+            resourceGroupName: '$(resourceGroupName)'
+            location: '$(location)'
+            templateLocation: 'Linked artifact'
+            csmFile: 'azure-arm/erebus-insights.json'
+            csmParametersFile: 'azure-arm/erebus-insights.parameters.json'
+            overrideParameters: '-insightsName $(applicationName)-insights'
+            deploymentMode: 'Incremental'
+  
+  ################################################################################
   #                         Create App Service Stage                             #
   ################################################################################  
   - stage: Create_App_Service
@@ -71,7 +93,7 @@ stages:
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-app.json'
             csmParametersFile: 'azure-arm/erebus-app.parameters.json'
-            overrideParameters: '-webAppName $(webAppName) -appServicePlanName $(appServicePlanName)'
+            overrideParameters: '-webAppName $(webAppName) -appServicePlanName $(appServicePlanName) -appInsightsName $(applicationName)-insights'
             deploymentMode: 'Incremental'
 
   ################################################################################
@@ -98,26 +120,4 @@ stages:
             azureSubscription: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
             appType: 'webAppLinux'
             WebAppName: '$(webAppName)'
-            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.war'
-
-  ################################################################################
-  #                            Deploy Insights Stage                             #
-  ################################################################################  
-  - stage: Deploy_Insights
-    jobs:
-      - job: Deploy_Insights
-        steps:
-        # Use ARM Template to deploy Insights
-        - task: AzureResourceManagerTemplateDeployment@3
-          inputs:
-            deploymentScope: 'Resource Group'
-            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
-            action: 'Create Or Update Resource Group'
-            resourceGroupName: '$(resourceGroupName)'
-            location: '$(location)'
-            templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-insights.json'
-            csmParametersFile: 'azure-arm/erebus-insights.parameters.json'
-            overrideParameters: '-insightsName $(applicationName)-insights'
-            deploymentMode: 'Incremental'            
+            packageForLinux: '$(System.ArtifactsDirectory)/drop/*.war'        

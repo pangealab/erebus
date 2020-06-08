@@ -7,6 +7,9 @@
         },
         "appServicePlanName": {
             "value": null
-        }
+        },
+        "appInsightsName": {
+          "value": null
+      }        
     }
 }
