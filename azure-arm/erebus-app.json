@@ -19,9 +19,7 @@
             "name": "[parameters('appInsightsName')]",
             "location": "[resourceGroup().location]",
             "tags": {
-                "service": "furball",
-                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webAppName'))]": "Resource",
-                "displayName": "AppInsightsComponent"
+                "service": "furball"
             },
             "kind": "web",
             "properties": {
