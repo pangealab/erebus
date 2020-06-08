@@ -9,7 +9,10 @@
             "value": null
         },
         "appInsightsName": {
-          "value": null
-      }        
+            "value": null
+        },
+        "alertName": {
+            "value": null
+        }
     }
 }

@@ -10,6 +10,9 @@
         },
         "appInsightsName": {
             "type": "string"
+        },
+        "alertName": {
+            "type": "string"
         }
     },
     "resources": [
@@ -147,6 +150,41 @@
                 "minTlsVersion": "1.2",
                 "ftpsState": "AllAllowed",
                 "reservedInstanceCount": 0
+            }
+        },
+        {
+            "name": "[parameters('alertName')]",
+            "type": "Microsoft.Insights/metricAlerts",
+            "location": "global",
+            "apiVersion": "2018-03-01",
+            "tags": {
+                "service": "furball"
+            },
+            "properties": {
+                "description": "[parameters('alertName')]",
+                "severity": 0,
+                "enabled": true,
+                "scopes": [
+                    "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+                ],
+                "evaluationFrequency": "0:01:00",
+                "windowSize": "0:01:00",
+                "criteria": {
+                    "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
+                    "allOf": [
+                        {
+                            "criterionType": "StaticThresholdCriterion",
+                            "dimensions": [],
+                            "metricName": "HttpResponseTime",
+                            "metricNamespace": "microsoft.web/sites",
+                            "monitorTemplateType": 8,
+                            "name": "Metric1",
+                            "operator": "GreaterThan",
+                            "threshold": 10,
+                            "timeAggregation": "Maximum"
+                        }
+                    ]
+                }
             }
         }
     ]

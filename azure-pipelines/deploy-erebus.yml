@@ -71,7 +71,7 @@ stages:
             templateLocation: 'Linked artifact'
             csmFile: 'azure-arm/erebus-app.json'
             csmParametersFile: 'azure-arm/erebus-app.parameters.json'
-            overrideParameters: '-webAppName $(webAppName) -appServicePlanName $(appServicePlanName) -appInsightsName $(applicationName)-insights'
+            overrideParameters: '-webAppName $(webAppName) -appServicePlanName $(appServicePlanName) -appInsightsName $(applicationName)-insights -alertName $(applicationName)-alert'
             deploymentMode: 'Incremental'
 
   ################################################################################
