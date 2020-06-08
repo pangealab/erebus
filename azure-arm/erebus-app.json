@@ -10,9 +10,25 @@
         },
         "appInsightsName": {
             "type": "string"
-        }        
+        }
     },
     "resources": [
+        {
+            "type": "Microsoft.Insights/components",
+            "apiVersion": "2015-05-01",
+            "name": "[parameters('appInsightsName')]",
+            "location": "[resourceGroup().location]",
+            "tags": {
+                "service": "furball",
+                "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', parameters('webAppName'))]": "Resource",
+                "displayName": "AppInsightsComponent"
+            },
+            "kind": "web",
+            "properties": {
+                "Application_Type": "web",
+                "applicationId": "[parameters('appInsightsName')]"
+            }
+        },
         {
             "type": "Microsoft.Web/sites",
             "apiVersion": "2018-11-01",
@@ -44,7 +60,7 @@
                     "appSettings": [
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference(concat('microsoft.insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+                            "value": "[(concat('Microsoft.Insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
                         }
                     ]
                 },
@@ -129,7 +145,7 @@
                 "http20Enabled": false,
                 "minTlsVersion": "1.2",
                 "ftpsState": "AllAllowed",
-                "reservedInstanceCount": 0        
+                "reservedInstanceCount": 0
             }
         }
     ]

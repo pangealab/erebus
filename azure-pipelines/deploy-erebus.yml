@@ -51,28 +51,6 @@ stages:
             csmParametersFile: 'azure-arm/erebus-sp.parameters.json'
             overrideParameters: '-appServicePlanName $(appServicePlanName) -skuName $(skuName) -skuCapacity $(skuCapacity)'
             deploymentMode: 'Incremental'
-
-  ################################################################################
-  #                            Deploy Insights Stage                             #
-  ################################################################################  
-  - stage: Deploy_Insights
-    jobs:
-      - job: Deploy_Insights
-        steps:
-        # Use ARM Template to deploy Insights
-        - task: AzureResourceManagerTemplateDeployment@3
-          inputs:
-            deploymentScope: 'Resource Group'
-            azureResourceManagerConnection: 'stage(39fa8f87-83f2-4d92-a424-408ebdfbeb19)'
-            subscriptionId: '39fa8f87-83f2-4d92-a424-408ebdfbeb19'
-            action: 'Create Or Update Resource Group'
-            resourceGroupName: '$(resourceGroupName)'
-            location: '$(location)'
-            templateLocation: 'Linked artifact'
-            csmFile: 'azure-arm/erebus-insights.json'
-            csmParametersFile: 'azure-arm/erebus-insights.parameters.json'
-            overrideParameters: '-appInsightsName $(applicationName)-insights'
-            deploymentMode: 'Incremental'
   
   ################################################################################
   #                         Create App Service Stage                             #
