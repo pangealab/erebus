@@ -2,16 +2,15 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "name": {
-            "type": "string",
-            "defaultValue": "furball-insights"
+        "insightsName": {
+            "type": "string"
         }
     },
     "resources": [
         {
             "type": "microsoft.insights/components",
             "apiVersion": "2015-05-01",
-            "name": "[parameters('name')]",
+            "name": "[parameters('insightsName')]",
             "location": "[resourceGroup().location]",
             "tags": {
                 "service": "furball"
