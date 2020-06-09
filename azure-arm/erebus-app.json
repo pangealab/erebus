@@ -10,7 +10,7 @@
         }
     },
     "variables": {
-      "appInsightsName": "[concat(parameters('webAppName'),'-insights')]"
+        "appInsightsName": "[concat(parameters('webAppName'),'-insights')]"
     },
     "resources": [
         {
