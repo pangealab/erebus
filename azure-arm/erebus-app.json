@@ -212,7 +212,7 @@
                             "monitorTemplateType": 8,
                             "name": "Metric1",
                             "operator": "GreaterThan",
-                            "threshold": 10,
+                            "threshold": 0.01,
                             "timeAggregation": "Maximum"
                         }
                     ]
