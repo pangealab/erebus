@@ -151,6 +151,35 @@
         },
         {
             "name": "Erebus",
+            "type": "microsoft.insights/actionGroups",
+            "apiVersion": "2019-03-01",
+            "location": "string",
+            "tags": {
+                "service": "furball"
+            },
+            "properties": {
+                "groupShortName": "Erebus",
+                "enabled": true,
+                "emailReceivers": [
+                    {
+                        "emailAddress": "aangelo@maildrop.cc",
+                        "name": "E-Mail",
+                        "useCommonAlertSchema": false
+                    }
+                ],
+                "smsReceivers": [],
+                "webhookReceivers": [],
+                "itsmReceivers": [],
+                "azureAppPushReceivers": [],
+                "automationRunbookReceivers": [],
+                "voiceReceivers": [],
+                "logicAppReceivers": [],
+                "azureFunctionReceivers": [],
+                "armRoleReceivers": []
+            }
+        },
+        {
+            "name": "Erebus",
             "type": "Microsoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",
