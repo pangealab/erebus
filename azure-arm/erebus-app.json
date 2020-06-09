@@ -170,7 +170,15 @@
                         "useCommonAlertSchema": false
                     }
                 ],
-                "smsReceivers": [],
+                // "smsReceivers": [],
+                "smsReceivers": [
+                  {
+                    "countryCode": "1",
+                    "name": "SMS",
+                    "phoneNumber": "2023905399",
+                    "status": "Enabled"
+                  }
+                ],
                 "webhookReceivers": [],
                 "itsmReceivers": [],
                 "azureAppPushReceivers": [],
