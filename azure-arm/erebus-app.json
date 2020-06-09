@@ -33,7 +33,7 @@
             "name": "[parameters('webAppName')]",
             "location": "[resourceGroup().location]",
             "dependsOn": [
-                "[resourceId('Microsoft.Insights/components', parameters('appInsightsName'))]"
+                "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
             ],
             "tags": {
                 "service": "furball"
@@ -61,7 +61,7 @@
                     "appSettings": [
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference(concat('microsoft.insights/components/', parameters('appInsightsName'))).InstrumentationKey]"
+                            "value": "[reference(concat('microsoft.insights/components/', variables('appInsightsName'))).InstrumentationKey]"
                         }
                     ]
                 },
