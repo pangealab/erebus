@@ -151,9 +151,12 @@
         },
         {
             "name": "Erebus",
-            "type": "microsoft.insights/actionGroups",
+            "type": "Microsoft.Insights/actionGroups",
             "apiVersion": "2019-03-01",
             "location": "string",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ]
             "tags": {
                 "service": "furball"
             },
@@ -183,6 +186,9 @@
             "type": "Microsoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",
+            "dependsOn": [
+                "[resourceId('Microsoft.Insights/actionGroups', 'Erebus')]"
+            ],
             "tags": {
                 "service": "furball"
             },
@@ -202,7 +208,7 @@
                             "criterionType": "StaticThresholdCriterion",
                             "dimensions": [],
                             "metricName": "HttpResponseTime",
-                            "metricNamespace": "microsoft.web/sites",
+                            "metricNamespace": "Microsoft.Web/sites",
                             "monitorTemplateType": 8,
                             "name": "Metric1",
                             "operator": "GreaterThan",
@@ -210,7 +216,13 @@
                             "timeAggregation": "Maximum"
                         }
                     ]
-                }
+                },
+                "actions": [
+                    {
+                        "actionGroupId": "[resourceId('Microsoft.Insights/actionGroups', 'Erebus')]",
+                        "webHookProperties": {}
+                    }
+                ]
             }
         }
     ]
