@@ -153,7 +153,7 @@
             "name": "Erebus",
             "type": "Microsoft.Insights/actionGroups",
             "apiVersion": "2019-03-01",
-            "location": "string",
+            "location": "Global",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
             ],
@@ -184,7 +184,7 @@
         {
             "name": "Erebus",
             "type": "Microsoft.Insights/metricAlerts",
-            "location": "global",
+            "location": "Global",
             "apiVersion": "2018-03-01",
             "dependsOn": [
                 "[resourceId('Microsoft.Insights/actionGroups', 'Erebus')]"
