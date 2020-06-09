@@ -165,21 +165,30 @@
                 "enabled": true,
                 "emailReceivers": [
                     {
-                        "emailAddress": "aangelo@maildrop.cc",
                         "name": "E-Mail",
+                        "emailAddress": "aangelo@maildrop.cc",
                         "useCommonAlertSchema": false
                     }
                 ],
                 // "smsReceivers": [],
                 "smsReceivers": [
                   {
-                    "countryCode": "1",
                     "name": "SMS",
-                    "phoneNumber": "2023905399",
-                    "status": "Enabled"
+                    "countryCode": "1",
+                    "phoneNumber": "2023905399"
                   }
                 ],
-                "webhookReceivers": [],
+                "webhookReceivers": [
+                  {
+                    "identifierUri": null,
+                    "name": "orlandodemo04",
+                    "objectId": null,
+                    "serviceUri": "https://orlandodemo04.service-now.com/api/global/em/inbound_event_azure",
+                    "tenantId": null,
+                    "useAadAuth": false,
+                    "useCommonAlertSchema": false
+                  }
+                ],
                 "itsmReceivers": [],
                 "azureAppPushReceivers": [],
                 "automationRunbookReceivers": [],
