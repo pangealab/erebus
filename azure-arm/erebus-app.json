@@ -164,8 +164,8 @@
                 "scopes": [
                     "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
                 ],
-                "evaluationFrequency": "0:01:00",
-                "windowSize": "0:01:00",
+                "evaluationFrequency": "PT1M",
+                "windowSize": "PT1M",
                 "criteria": {
                     "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
                     "allOf": [
