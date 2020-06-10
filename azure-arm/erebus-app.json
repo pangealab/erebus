@@ -170,14 +170,14 @@
                         "useCommonAlertSchema": false
                     }
                 ],
-                // "smsReceivers": [],
-                "smsReceivers": [
-                  {
-                    "name": "SMS",
-                    "countryCode": "1",
-                    "phoneNumber": "2023905399"
-                  }
-                ],
+                "smsReceivers": [],
+                // "smsReceivers": [
+                //   {
+                //     "name": "SMS",
+                //     "countryCode": "1",
+                //     "phoneNumber": "2023905399"
+                //   }
+                // ],
                 "webhookReceivers": [
                   {
                     "identifierUri": null,
