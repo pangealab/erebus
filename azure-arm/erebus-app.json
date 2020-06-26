@@ -183,7 +183,7 @@
                     "identifierUri": null,
                     "name": "orlandodemo04",
                     "objectId": null,
-                    "serviceUri": "https://orlandodemo04.service-now.com/api/global/em/inbound_event_azure",
+                    "serviceUri": "https://orlandodemo04.service-now.com/api/global/em/inbound_event_azure_webhook?service=2f57ed56db555010230790c7db961963",
                     "tenantId": null,
                     "useAadAuth": false,
                     "useCommonAlertSchema": false
