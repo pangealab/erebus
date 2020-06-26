@@ -150,7 +150,7 @@
             }
         },
         {
-            "name": "Erebus",
+            "name": "ErebusAG1",
             "type": "Microsoft.Insights/actionGroups",
             "apiVersion": "2019-03-01",
             "location": "Global",
@@ -161,7 +161,7 @@
                 "service": "furball"
             },
             "properties": {
-                "groupShortName": "Erebus",
+                "groupShortName": "ErebusAG1",
                 "enabled": true,
                 "emailReceivers": [
                     {
@@ -199,18 +199,18 @@
             }
         },
         {
-            "name": "Erebus",
+            "name": "ErebusAL1",
             "type": "Microsoft.Insights/metricAlerts",
             "location": "Global",
             "apiVersion": "2018-03-01",
             "dependsOn": [
-                "[resourceId('Microsoft.Insights/actionGroups', 'Erebus')]"
+                "[resourceId('Microsoft.Insights/actionGroups', 'ErebusAG1')]"
             ],
             "tags": {
                 "service": "furball"
             },
             "properties": {
-                "description": "Erebus",
+                "description": "ErebusAL1",
                 "severity": 0,
                 "enabled": true,
                 "scopes": [
@@ -236,7 +236,7 @@
                 },
                 "actions": [
                     {
-                        "actionGroupId": "[resourceId('Microsoft.Insights/actionGroups', 'Erebus')]",
+                        "actionGroupId": "[resourceId('Microsoft.Insights/actionGroups', 'ErebusAG1')]",
                         "webHookProperties": {}
                     }
                 ]
