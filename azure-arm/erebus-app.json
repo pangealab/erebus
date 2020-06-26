@@ -187,7 +187,16 @@
                     "tenantId": null,
                     "useAadAuth": false,
                     "useCommonAlertSchema": false
-                  }
+                  },
+                  {
+                    "identifierUri": null,
+                    "name": "pagerduty",
+                    "objectId": null,
+                    "serviceUri": "https://events.pagerduty.com/integration/45e2abd1700946ada3e3f9818ba6b6ec/enqueue",
+                    "tenantId": null,
+                    "useAadAuth": false,
+                    "useCommonAlertSchema": false
+                  }                 
                 ],
                 "itsmReceivers": [],
                 "azureAppPushReceivers": [],
