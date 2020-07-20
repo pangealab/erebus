@@ -181,7 +181,7 @@
                 "webhookReceivers": [
                   {
                     "identifierUri": null,
-                    "name": "orlandodemo04",
+                    "name": "orlandodemo04-1",
                     "objectId": null,
                     "serviceUri": "https://orlandodemo04.service-now.com/api/global/em/inbound_event_azure_webhook?service=2f57ed56db555010230790c7db961963",
                     "tenantId": null,
@@ -190,13 +190,22 @@
                   },
                   {
                     "identifierUri": null,
-                    "name": "pagerduty",
+                    "name": "pagerduty-1",
                     "objectId": null,
                     "serviceUri": "https://events.pagerduty.com/integration/45e2abd1700946ada3e3f9818ba6b6ec/enqueue",
                     "tenantId": null,
                     "useAadAuth": false,
                     "useCommonAlertSchema": false
-                  }                 
+                  },
+                  {
+                    "identifierUri": null,
+                    "name": "modops-1",
+                    "objectId": null,
+                    "serviceUri": "https://snsfwpoc.service-now.com/api/sn_itx_sfw_core/service_integrations/event_sink/8f5f1ed6db7d5c1062dff1471d9619f9",
+                    "tenantId": null,
+                    "useAadAuth": false,
+                    "useCommonAlertSchema": true
+                  }
                 ],
                 "itsmReceivers": [],
                 "azureAppPushReceivers": [],
