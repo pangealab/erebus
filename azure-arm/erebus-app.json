@@ -196,15 +196,6 @@
                     "tenantId": null,
                     "useAadAuth": false,
                     "useCommonAlertSchema": false
-                  },
-                  {
-                    "identifierUri": null,
-                    "name": "stage-1",
-                    "objectId": null,
-                    "serviceUri": "https://snsfwpoc.service-now.com/api/sn_itx_sfw_core/service_integrations/event_sink/8f5f1ed6db7d5c1062dff1471d9619f9",
-                    "tenantId": null,
-                    "useAadAuth": false,
-                    "useCommonAlertSchema": true
                   }
                 ],
                 "itsmReceivers": [],
