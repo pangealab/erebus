@@ -13,10 +13,16 @@ This project showcases a simple web app written using Java Spring Boot 2.2 and w
 
 # Deploy Locally
 
+1. Build Artifact
+
+    ```
+    mvn clean install -Dmaven.test.skip=true
+    ```
+
 1. Run Project locally
 
     ```
-    mvn spring-boot:run
+    ./mvnw spring-boot:run
     ```
 
 1. Test Local URLs
