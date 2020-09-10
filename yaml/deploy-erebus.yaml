@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: erebus
   labels:
+    app: erebus
     monitor: true
 spec:
   replicas: 1
