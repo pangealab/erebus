@@ -2,12 +2,12 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: erebus
+  monitor: true
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: erebus
-      monitor: true
   template:
     metadata:
       labels:
