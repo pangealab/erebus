@@ -26,8 +26,14 @@
     <dependency>
       <groupId>io.micrometer</groupId>
       <artifactId>micrometer-core</artifactId>
-      <version>1.5.2</version>
+      <version>1.5.4</version>
     </dependency>
+    <!-- Prometheus -->
+    <dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+			<version>1.5.4</version>
+		</dependency>
     <!-- Azure Micrometer -->
     <dependency>
       <groupId>io.micrometer</groupId>
